@@ -3,7 +3,7 @@ $error_code = 0;
 
 try {
 // Db configuration
-require_once("db.php");
+require_once("../db.php");
 
     // Retrive data
     $nick = $_POST["nickname"];
@@ -50,7 +50,8 @@ require_once("db.php");
 
     // Create account
     if($stmt->execute()) {
-        echo "Pomyślnie zarejestrowano użytkownika.";
+        echo "udało się";
+        header("Location: ../index.html");
     } else {
         $error_code = "1";
         throw new Exception();

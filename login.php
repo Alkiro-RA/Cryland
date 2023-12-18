@@ -25,6 +25,8 @@ try {
     }
     $result = $stmt->fetchAll();
 
+    echo $_SESSION["user_id"];
+
     // Match password
     foreach (($result) as $row) {
         if (password_verify($pass, $row["password"])) {
@@ -35,5 +37,6 @@ try {
     }
 } catch (Exception) {
     // nic nie robie
+    echo "błąd;"
 }
 ?>
