@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 18 Gru 2023, 20:40
+-- Czas generowania: 20 Gru 2023, 21:44
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `armors` (
   `id` int(255) NOT NULL,
   `name` varchar(60) NOT NULL,
-  `atack_bonus` int(255) NOT NULL,
+  `attack_bonus` int(255) NOT NULL,
   `health_bonus` int(255) NOT NULL,
   `defense_bonus` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -44,7 +44,7 @@ CREATE TABLE `armors` (
 CREATE TABLE `bosses` (
   `id` int(255) NOT NULL,
   `name` varchar(60) NOT NULL,
-  `atack` int(255) NOT NULL,
+  `attack` int(255) NOT NULL,
   `health` int(255) NOT NULL,
   `defense` int(255) NOT NULL,
   `consumable` int(255) NOT NULL
@@ -72,13 +72,20 @@ CREATE TABLE `characters` (
   `name` varchar(60) NOT NULL,
   `level` int(255) NOT NULL,
   `exp` int(255) NOT NULL,
-  `atack` int(255) NOT NULL,
+  `attack` int(255) NOT NULL,
   `health` int(255) NOT NULL,
   `defense` int(255) NOT NULL,
   `potion` int(60) NOT NULL,
   `consumable` int(60) NOT NULL,
   `consumable_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Zrzut danych tabeli `characters`
+--
+
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `attack`, `health`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
+(1, 'Kyuba', 1, 0, 5, 5, 5, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -89,10 +96,17 @@ CREATE TABLE `characters` (
 CREATE TABLE `enemies` (
   `id` int(255) NOT NULL,
   `name` varchar(60) NOT NULL,
-  `atack` int(255) NOT NULL,
+  `attack` int(255) NOT NULL,
   `health` int(255) NOT NULL,
   `defense` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Zrzut danych tabeli `enemies`
+--
+
+INSERT INTO `enemies` (`id`, `name`, `attack`, `health`, `defense`) VALUES
+(1, 'Goblin', 4, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -147,7 +161,7 @@ INSERT INTO `users` (`id`, `roleid`, `nickname`, `email`, `password`) VALUES
 CREATE TABLE `weapons` (
   `id` int(255) NOT NULL,
   `name` varchar(60) NOT NULL,
-  `atack_bonus` int(255) NOT NULL,
+  `attack_bonus` int(255) NOT NULL,
   `health_bonus` int(255) NOT NULL,
   `defense_bonus` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -232,13 +246,13 @@ ALTER TABLE `bosses`
 -- AUTO_INCREMENT dla tabeli `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `enemies`
 --
 ALTER TABLE `enemies`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `roles`
