@@ -1,8 +1,10 @@
 <?php
 try {
-    // Db configuration
-    require_once("db.php");
+    // Start new sesh
+    session_start();
 
+    // Db configuration
+    require_once("data/db.php");
 
     // Check for missing data
     foreach ($_POST as $key => $value) {
@@ -23,20 +25,17 @@ try {
     if (!$stmt->execute()) {
         throw new Exception();
     }
-    $result = $stmt->fetchAll();
-
-    echo $_SESSION["user_id"];
+    $result = $stmt->fetch();
 
     // Match password
-    foreach (($result) as $row) {
-        if (password_verify($pass, $row["password"])) {
-            $_SESSION["user_id"] = $row["id"];
-            echo "Zalogowano pomyślnie.";
-            break;
+        if (password_verify($pass, $result["password"])) {
+            $_SESSION["user_id"] = $result["id"];
+            header("Location: account/index.html");
+        } else {
+            echo "Podane dane są nieprawidłowe.";
         }
-    }
-} catch (Exception) {
-    // nic nie robie
-    echo "błąd;"
+}
+ catch (Exception) {
+    echo "Błąd.";
 }
 ?>

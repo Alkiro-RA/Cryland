@@ -3,7 +3,7 @@ $error_code = 0;
 
 try {
 // Db configuration
-require_once("../db.php");
+require_once("../data/db.php");
 
     // Retrive data
     $nick = $_POST["nickname"];

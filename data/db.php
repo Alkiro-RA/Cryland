@@ -9,5 +9,4 @@ $dsn = "mysql:host=" . $host . ";dbname=" . $dbname;
 
 // Create PDO in stance
 $pdo = new PDO($dsn, $username, $password);
-session_start();
 ?>
