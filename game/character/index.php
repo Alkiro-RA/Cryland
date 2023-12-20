@@ -1,3 +1,10 @@
+<!-- Authorization -->
+<?php
+require_once("../../other/authorization.php");
+?>
+
+<!-- HTML -->
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">

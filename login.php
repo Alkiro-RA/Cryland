@@ -1,8 +1,5 @@
 <?php
 try {
-    // Start new sesh
-    session_start();
-
     // Db configuration
     require_once("data/db.php");
 
@@ -29,6 +26,9 @@ try {
 
     // Match password
         if (password_verify($pass, $result["password"])) {
+            // Create new session ID for user
+            session_start();
+            $_SESSION["logged_in"] = true;
             $_SESSION["user_id"] = $result["id"];
             header("Location: account/index.html");
         } else {
