@@ -30,7 +30,7 @@ try {
             session_start();
             $_SESSION["logged_in"] = true;
             $_SESSION["user_id"] = $result["id"];
-            header("Location: account/index.html");
+            header("Location: account/index.php");
         } else {
             echo "Podane dane są nieprawidłowe.";
         }
