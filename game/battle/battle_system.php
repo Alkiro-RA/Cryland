@@ -71,6 +71,7 @@ while ($player_health > 0 || $enemy_health > 0) {
                     break;
 
                 case 'consumable_2':
+                    // Bomb that ignore defense
                     $dmg = $player['attack']*2;
                     $enemy_health = $enemy_health - $dmg;
 

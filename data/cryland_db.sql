@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Gru 2023, 21:44
+-- Czas generowania: 21 Gru 2023, 16:07
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -53,17 +53,6 @@ CREATE TABLE `bosses` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `characterlist`
---
-
-CREATE TABLE `characterlist` (
-  `userid` int(255) NOT NULL,
-  `characterid` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `characters`
 --
 
@@ -72,6 +61,8 @@ CREATE TABLE `characters` (
   `name` varchar(60) NOT NULL,
   `level` int(255) NOT NULL,
   `exp` int(255) NOT NULL,
+  `weaponsid` int(11) DEFAULT NULL,
+  `armorsid` int(11) DEFAULT NULL,
   `attack` int(255) NOT NULL,
   `health` int(255) NOT NULL,
   `defense` int(255) NOT NULL,
@@ -84,8 +75,8 @@ CREATE TABLE `characters` (
 -- Zrzut danych tabeli `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `attack`, `health`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
-(1, 'Kyuba', 1, 0, 5, 5, 5, 1, 1, 1);
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `weaponsid`, `armorsid`, `attack`, `health`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
+(1, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -111,18 +102,6 @@ INSERT INTO `enemies` (`id`, `name`, `attack`, `health`, `defense`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `eq`
---
-
-CREATE TABLE `eq` (
-  `characterid` int(255) NOT NULL,
-  `weaponid` int(255) NOT NULL,
-  `armorid` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `roles`
 --
 
@@ -140,17 +119,11 @@ CREATE TABLE `roles` (
 CREATE TABLE `users` (
   `id` int(255) NOT NULL,
   `roleid` int(10) NOT NULL,
+  `charactersid` int(255) NOT NULL,
   `nickname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Zrzut danych tabeli `users`
---
-
-INSERT INTO `users` (`id`, `roleid`, `nickname`, `email`, `password`) VALUES
-(1, 0, 'Kyuba', 'test@o2.pl', '$2y$10$BCz8EvvyQoih1.Q6AY4OkebrKTsuDoAXIWwq1H1g7z5LOtkgTM7z.');
 
 -- --------------------------------------------------------
 
@@ -183,29 +156,18 @@ ALTER TABLE `bosses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `characterlist`
---
-ALTER TABLE `characterlist`
-  ADD KEY `userid` (`userid`),
-  ADD KEY `characterid` (`characterid`);
-
---
 -- Indeksy dla tabeli `characters`
 --
 ALTER TABLE `characters`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `armorsid` (`armorsid`),
+  ADD KEY `weaponsid` (`weaponsid`);
 
 --
 -- Indeksy dla tabeli `enemies`
 --
 ALTER TABLE `enemies`
   ADD PRIMARY KEY (`id`);
-
---
--- Indeksy dla tabeli `eq`
---
-ALTER TABLE `eq`
-  ADD KEY `characterid` (`characterid`,`weaponid`,`armorid`);
 
 --
 -- Indeksy dla tabeli `roles`
@@ -218,7 +180,8 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `roleid` (`roleid`);
+  ADD KEY `roleid` (`roleid`),
+  ADD KEY `charactersid` (`charactersid`);
 
 --
 -- Indeksy dla tabeli `weapons`
@@ -277,17 +240,23 @@ ALTER TABLE `weapons`
 --
 
 --
--- Ograniczenia dla tabeli `characterlist`
+-- Ograniczenia dla tabeli `characters`
 --
-ALTER TABLE `characterlist`
-  ADD CONSTRAINT `characterlist_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `characterlist_ibfk_2` FOREIGN KEY (`characterid`) REFERENCES `characters` (`id`);
+ALTER TABLE `characters`
+  ADD CONSTRAINT `characters_ibfk_1` FOREIGN KEY (`armorsid`) REFERENCES `armors` (`id`),
+  ADD CONSTRAINT `characters_ibfk_2` FOREIGN KEY (`weaponsid`) REFERENCES `weapons` (`id`);
 
 --
 -- Ograniczenia dla tabeli `roles`
 --
 ALTER TABLE `roles`
   ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`roleid`);
+
+--
+-- Ograniczenia dla tabeli `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`charactersid`) REFERENCES `characters` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
