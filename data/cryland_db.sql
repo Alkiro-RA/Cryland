@@ -53,12 +53,12 @@ CREATE TABLE `bosses` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `characterlist`
+-- Struktura tabeli dla tabeli `character_list`
 --
 
-CREATE TABLE `characterlist` (
-  `userid` int(255) NOT NULL,
-  `characterid` int(255) NOT NULL
+CREATE TABLE `character_list` (
+  `user_id` int(255) NOT NULL,
+  `character_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -86,7 +86,8 @@ CREATE TABLE `characters` (
 
 INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `attack`, `health`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
 (1, 'Kyuba', 1, 0, 5, 5, 5, 1, 1, 1);
-
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `attack`, `health`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
+(2, 'Alkiro', 1, 0, 5, 5, 5, 1, 1, 1);
 -- --------------------------------------------------------
 
 --
@@ -115,9 +116,9 @@ INSERT INTO `enemies` (`id`, `name`, `attack`, `health`, `defense`) VALUES
 --
 
 CREATE TABLE `eq` (
-  `characterid` int(255) NOT NULL,
-  `weaponid` int(255) NOT NULL,
-  `armorid` int(255) NOT NULL
+  `character_id` int(255) NOT NULL,
+  `weapon_id` int(255) NOT NULL,
+  `armor_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -128,7 +129,7 @@ CREATE TABLE `eq` (
 
 CREATE TABLE `roles` (
   `id` int(255) NOT NULL,
-  `rolename` varchar(60) NOT NULL
+  `role_name` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -139,7 +140,7 @@ CREATE TABLE `roles` (
 
 CREATE TABLE `users` (
   `id` int(255) NOT NULL,
-  `roleid` int(10) NOT NULL,
+  `role_id` int(10) NOT NULL,
   `nickname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
@@ -149,8 +150,11 @@ CREATE TABLE `users` (
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `roleid`, `nickname`, `email`, `password`) VALUES
+INSERT INTO `users` (`id`, `role_id`, `nickname`, `email`, `password`) VALUES
 (1, 0, 'Kyuba', 'test@o2.pl', '$2y$10$BCz8EvvyQoih1.Q6AY4OkebrKTsuDoAXIWwq1H1g7z5LOtkgTM7z.');
+INSERT INTO `users` (`id`, `role_id`, `nickname`, `email`, `password`) VALUES
+(2, 0, 'test1', 'test1@test.pl', '$2y$10$Imjuc3TesFawIKokHD8Ww.cumaTsxmfGeq7JAgsXNhht432vAwWs.');
+
 
 -- --------------------------------------------------------
 
@@ -183,11 +187,11 @@ ALTER TABLE `bosses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeksy dla tabeli `characterlist`
+-- Indeksy dla tabeli `character_list`
 --
-ALTER TABLE `characterlist`
-  ADD KEY `userid` (`userid`),
-  ADD KEY `characterid` (`characterid`);
+ALTER TABLE `character_list`
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `character_id` (`character_id`);
 
 --
 -- Indeksy dla tabeli `characters`
@@ -205,7 +209,7 @@ ALTER TABLE `enemies`
 -- Indeksy dla tabeli `eq`
 --
 ALTER TABLE `eq`
-  ADD KEY `characterid` (`characterid`,`weaponid`,`armorid`);
+  ADD KEY `character_id` (`character_id`,`weapon_id`,`armor_id`);
 
 --
 -- Indeksy dla tabeli `roles`
@@ -218,7 +222,7 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `roleid` (`roleid`);
+  ADD KEY `role_id` (`role_id`);
 
 --
 -- Indeksy dla tabeli `weapons`
@@ -277,17 +281,17 @@ ALTER TABLE `weapons`
 --
 
 --
--- Ograniczenia dla tabeli `characterlist`
+-- Ograniczenia dla tabeli `character_list`
 --
-ALTER TABLE `characterlist`
-  ADD CONSTRAINT `characterlist_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `characterlist_ibfk_2` FOREIGN KEY (`characterid`) REFERENCES `characters` (`id`);
+ALTER TABLE `character_list`
+  ADD CONSTRAINT `character_list_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `character_list_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`);
 
 --
 -- Ograniczenia dla tabeli `roles`
 --
 ALTER TABLE `roles`
-  ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`roleid`);
+  ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`role_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
