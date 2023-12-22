@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Gru 2023, 16:20
+-- Czas generowania: 22 Gru 2023, 18:17
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -78,7 +78,7 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `weaponsid`, `armorsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
-(1, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1, 1),
+(1, 'Kyuba', 1, 0, NULL, NULL, 5, 4, 5, 5, 0, 0, 1),
 (3, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -89,6 +89,7 @@ INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `weaponsid`, `armorsid`,
 
 CREATE TABLE `enemies` (
   `id` int(255) NOT NULL,
+  `lvl` int(60) NOT NULL,
   `name` varchar(60) NOT NULL,
   `attack` int(255) NOT NULL,
   `health` int(255) NOT NULL,
@@ -100,8 +101,9 @@ CREATE TABLE `enemies` (
 -- Zrzut danych tabeli `enemies`
 --
 
-INSERT INTO `enemies` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`) VALUES
-(1, 'Goblin', 4, 4, 4, 4);
+INSERT INTO `enemies` (`id`, `lvl`, `name`, `attack`, `health`, `maxhealth`, `defense`) VALUES
+(1, 2, 'Goblin', 2, 6, 6, 2),
+(2, 1, 'Wolf', 2, 5, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -226,7 +228,7 @@ ALTER TABLE `characters`
 -- AUTO_INCREMENT dla tabeli `enemies`
 --
 ALTER TABLE `enemies`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `roles`
