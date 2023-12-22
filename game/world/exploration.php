@@ -71,7 +71,7 @@ try {
         <p>You've encountered new enemy! It is </p>
         <?php echo $new_enemy['name'];?>
         <!-- gdzieś tu zaczyna sie walka -->
-        <?php $_SESSION['paralis_counter'] = 0;
+        <?php $_SESSION['paralysis_counter'] = 0;
             $_SESSION['battle_log'] = '<p>Begin of battle with'.$new_enemy['name'].'</p>'; ?>
     </div>
 
