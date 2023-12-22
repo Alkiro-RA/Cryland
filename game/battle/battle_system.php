@@ -27,6 +27,8 @@ try {
     $stmt->execute();
     $enemy = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    $_SESSION['enemy'] = $enemy;
+
     // Check if data was fetched successfully
     if ($player && $enemy) {
         // Do something with $player and $enemy data
@@ -122,7 +124,7 @@ try {
                 // Update player's health based on enemy's attack power
                 if ($paralysis_bomb > 0)
                 {
-                    $paralysis_bomb --;
+                    $paralysis_bomb = $paralysis_bomb - 1;
                 }
                 else{
                     $dmg = $enemy['attack'] - $player['defense'];
@@ -160,7 +162,7 @@ try {
 
 
 $player_action_done = false;
-
+$notification = '<div><p>you have been deafeted</p></div>';
 // Generate the updated battle information HTML
 $battleInfoHTML = '<div class="battle-info">';
 $battleInfoHTML .= '<div class="player-info">';
