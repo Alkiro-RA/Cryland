@@ -6,8 +6,10 @@ try {
     // Get a list of potential enemies 
     $char_level = $_SESSION['character']['level'];
 
-    echo "char_level = " . $char_level;
 
+    echo "char_level = " . $char_level . "</br>";
+
+    
     $sql = "SELECT * FROM Enemies WHERE lvl <= 3";
     $stmt = $pdo->prepare($sql);
     //$stmt->bindParam(":char_level", $char_level);
@@ -18,7 +20,15 @@ try {
     $enemy_id_pool = array();
     $i = 0;
     foreach ($enemies as $enemy) {
+
+
+        echo $enemy['name'] . "</br>";
+
+
         array_push($enemy_id_pool, $enemy['id']);
+
+
+        echo $enemy_id_pool[0];
     }
     // Generate random enemy
     $new_enemy = "";
@@ -26,7 +36,7 @@ try {
     foreach ($enemies as $enemy) {
         if ($enemy['id'] = $chosen_enemy_id) {
             // Add enemy to session
-            
+            $_SESSION['enemy'] = '';
         }
     }
 } catch (Exception) {
@@ -58,10 +68,10 @@ try {
     <!-- Exploration -->
     <div>
         <h1> Dark Forest </h1>
-        <a>You've encountered new enemy! It is </a>
+        <p>You've encountered new enemy! It is </p>
         <?php echo $new_enemy['name'];?>
         <!-- gdzieś tu zaczyna sie walka -->
-        <?php $_SESSION['paralis_counter'] = 0;
+        <?php $_SESSION['paralysis_counter'] = 0;
             $_SESSION['battle_log'] = ''; ?>
     </div>
 
