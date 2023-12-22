@@ -62,7 +62,7 @@ try {
         <?php echo $new_enemy['name'];?>
         <!-- gdzieś tu zaczyna sie walka -->
         <?php $_SESSION['paralis_counter'] = 0;
-            $_SESSION['battle_log'] = ''; ?>
+            $_SESSION['battle_log'] = '<p>Begin of battle with'.$new_enemy['name'].'</p>'; ?>
     </div>
 
 </body>
