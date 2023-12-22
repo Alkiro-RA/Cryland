@@ -1,0 +1,61 @@
+/* Updated styles */
+
+.battle-info {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 50px; /* Max distance between player and enemy */
+    margin-top: 20px;
+    margin-bottom: 20px; /* Spacing between battle info and buttons */
+}
+
+.player-info, .enemy-info {
+    width: 20%; /* Adjust width as needed */
+    border: 5px solid #ccc;
+    padding: 10px;
+}
+
+.player-info{
+    border-color: yellowgreen;
+}
+
+.enemy-info{
+    border-color: darkred;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin : 10px;/* Adjust the height as needed */
+}
+
+.scrollable-container {
+    width: 300px; /* Define your container width */
+    height: 200px; /* Define your container height */
+    overflow: auto; /* Enable scrolling for overflow content */
+    border: 1px solid #ccc; /* Optional border styling */
+}
+
+.content {
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+    /* Optional styling for the content inside the scrollable container */
+}
+
+.paralized{
+    background-color: gold;
+    color: black;
+}
