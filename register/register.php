@@ -42,8 +42,8 @@ try {
 
     // Prep new character
     $sql = "INSERT INTO Characters
-    (name, level, exp, weaponsid, armorsid, attack, health, defense, potion, consumable, consumable_2) VALUES
-    (:char_name, 1, 0, NULL, NULL, 5, 5, 5, 1, 1, 1)";
+    (name, level, exp, weaponsid, armorsid, attack, health, maxhealth, defense, potion, consumable, consumable_2) VALUES
+    (:char_name, 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1, 1)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":char_name", $name);
 
