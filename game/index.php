@@ -10,30 +10,7 @@ require_once("../other/authorization.php");
 <head>
     <meta charset="UTF-8">
     <title> Character </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-        }
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="../other/navbar.css">
 </head>
 
 <body>
@@ -44,16 +21,12 @@ require_once("../other/authorization.php");
         <a href="about/index.html">About</a>
         <a class="logout" href="/cryland/other/logout.php">Logout</a>
     </div>
-    <!-- Game -->
-    <div>
-        <h1> Dom </h1>
-        </br>
-        <a>*Akcje*</a>
-        <ul>
-            <li> eksploracja </li>
-            <li> karta postaci </li>
-            <li> boss fight </li>
-        </ul>
+    <!-- Main menu -->
+    <div class="menu">
+        <h2> Twoja chata </br> (Menu główne) </h2>
+        <a href="world/index.php"> Idź expić </a> </br>
+        <a href="character/index.php"> Ogarnij się </a> </br>
+        <a href="battle/boss/index.php"> Walcz z dużym złym </a>
     </div>
 </body>
 

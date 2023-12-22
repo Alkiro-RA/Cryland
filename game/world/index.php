@@ -23,7 +23,9 @@ require_once("../../other/authorization.php");
     </div>
     <!-- World -->
     <div>
-        <h1> Exploring... </h1>
+        <h1> Dark Forest </h1>
+        <a> You've left your village and now you're standing at the entrance of the infamous Dark Forest </a> </br>
+        <a href="exploration.php"> "I fear not darkness nor forests!"</a> <a> <b>(Enter)</b> </a>
     </div>
 </body>
 

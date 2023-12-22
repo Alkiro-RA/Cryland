@@ -30,6 +30,7 @@ try {
             session_start();
             $_SESSION["logged_in"] = true;
             $_SESSION["user_id"] = $result["id"];
+            $_SESSION["char_id"] = $result["charactersid"];
             header("Location: account/index.php");
         } else {
             echo "Podane dane są nieprawidłowe.";
