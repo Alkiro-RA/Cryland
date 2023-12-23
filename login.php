@@ -1,4 +1,5 @@
 <?php
+session_start();
 try {
     // Db configuration
     require_once("data/db.php");
@@ -33,10 +34,12 @@ try {
             $_SESSION["char_id"] = $result["charactersid"];
             header("Location: account/index.php");
         } else {
-            echo "Podane dane są nieprawidłowe.";
+            $_SESSION["error"] = "Wrong password or email";
+            header("Location: index.php");
         }
 }
- catch (Exception) {
-    echo "Błąd.";
+ catch (Exception $e) {
+     $_SESSION["error"] = array($e->getMessage());
+     header("Location: index.php");
 }
 ?>

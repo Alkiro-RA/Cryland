@@ -1,4 +1,5 @@
 <?php
+session_start();
 $error_code = 0;
 
 try {
@@ -77,13 +78,14 @@ try {
     // Create account
     if ($stmt->execute()) {
         echo "udało się";
-        header("Location: ../index.html");
+        header("Location: ../index.php");
     } else {
         $error_code = "0";
         throw new Exception();
     }
 } catch (Exception $e) {
-    echo get_error_msg($error_code);
+    $_SESSION['error'] = get_error_msg($error_code);
+    header("Location: index.php");
 }
 
 function verify_email($email)
@@ -101,16 +103,16 @@ function get_error_msg($error_code)
     $message = '';
     switch ($error_code) {
         case 1:
-            $message = "Nie udało się dodać użytkownika.";
+            $message = "Unable to add user";
             break;
         case 2:
-            $message = "Podane hasła nie są identyczne.";
+            $message = "Passwords didn't match";
             break;
         case 3:
-            $message = "Podana nazwa użytkownika / adres e-mail są już używane przez innego użytkownika.";
+            $message = "Nickname / e-mail are taken";
             break;
         default:
-            $message = "Nieznany błąd.";
+            $message = "Error";
             break;
     }
     return $message;

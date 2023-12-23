@@ -5,7 +5,7 @@ require_once ("../../data/db.php");
 require_once("../../other/authorization.php");
 
 try {
-    // Fetch user data by ID
+    /*// Fetch user data by ID
     $user_id = $_SESSION['user_id'];
     $stmt = $pdo->prepare("SELECT * FROM users WHERE id = :id");
     $stmt->bindParam(':id', $user_id);
@@ -24,9 +24,9 @@ try {
     $stmt = $pdo->prepare("SELECT * FROM enemies WHERE id = :id");
     $stmt->bindParam(':id', $enemy_id);
     $stmt->execute();
-    $enemy = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $_SESSION['enemy'] = $enemy;
+    $enemy = $stmt->fetch(PDO::FETCH_ASSOC);*/
+    $enemy = $_SESSION['enemy'];
+    $player = $_SESSION['character'];
 
     // Check if data was fetched successfully
     if ($player && $enemy) {
@@ -154,7 +154,10 @@ try {
     }
     // Update player and enemy data in the database after battle
     if ($player && $enemy) {
-        // Update player's data in the database
+        $_SESSION['enemy'] = $enemy;
+        $_SESSION['character'] = $player;
+
+        /*// Update player's data in the database
         $stmt = $pdo->prepare("UPDATE characters SET health = :health, potion = :potion, consumable = :consumable, consumable_2 = :consumable_2 WHERE id = :id");
         $stmt->bindParam(':health', $player['health']);
         $stmt->bindParam(':potion', $player['potion']);
@@ -167,7 +170,7 @@ try {
         $stmt = $pdo->prepare("UPDATE enemies SET health = :health WHERE id = :id");
         $stmt->bindParam(':health', $enemy['health']);
         $stmt->bindParam(':id', $enemy_id);
-        $stmt->execute();
+        $stmt->execute();*/
     }
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();

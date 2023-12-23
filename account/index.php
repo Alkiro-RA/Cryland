@@ -34,12 +34,7 @@ try {
 
 <body>
     <!-- Navigation bar -->
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="ranking/index.html">Ranking</a>
-        <a href="about/index.html">About</a>
-        <a class="logout" href="/cryland/other/logout.php">Logout</a>
-    </div>
+    <?php require_once("../styles/navbar.php")?>
 
     <div>
         <h3>Character's details:</h3>
