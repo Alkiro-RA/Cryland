@@ -10,8 +10,7 @@ require_once("../../other/authorization.php");
 <head>
     <meta charset="UTF-8">
     <title> Battle </title>
-    <link rel="stylesheet" href="../../other/navbar.css">
-    <link rel="stylesheet" href="../../styles/battle_style.css">
+    <link rel="stylesheet" href="../../styles/style.css">
     <style>
         /* <!-- For testing more styles in future --> */
     </style>

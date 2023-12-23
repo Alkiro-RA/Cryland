@@ -16,11 +16,13 @@
 }
 
 .player-info{
-    border-color: yellowgreen;
+    border-color: green;
+    background: yellowgreen;
 }
 
 .enemy-info{
-    border-color: darkred;
+    border-color: #6e0000;
+    background: #e80202;
 }
 
 .buttons {

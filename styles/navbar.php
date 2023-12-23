@@ -15,7 +15,8 @@ if ($_SESSION['logged_in'])
     <div class="navbar">
         <div class="flex-container">
             <div>
-                <a href="index.html">Home</a>
+                <a href="/Cryland/account">Home</a>
+                <a href="/Cryland/game/character">Character</a>
                 <a href="ranking/index.html">Ranking</a>
                 <a href="about/index.html">About</a>
             </div>
