@@ -5,30 +5,6 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     <style>
-        /* Basic styling for the form */
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-        }
-
-        .navbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
         .login-container {
             width: 18%;
             margin: 5% auto;
@@ -67,12 +43,10 @@
 
 <body>
     <!-- Navigation bar -->
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="register/index.html">Register</a>
-        <a href="ranking/index.html">Ranking</a>
-        <a href="about/index.html">About</a>
-    </div>
+    <?php
+    session_start();
+    $_SESSION['logged_in'] = false;
+    include_once("styles/navbar.php");?>
     <!-- Login form  -->
     <div class="login-container">
         <h2>Login</h2>

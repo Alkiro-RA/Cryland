@@ -3,5 +3,5 @@ require_once("authorization.php");
 $_SESSION["user_id"] = 0;
 $_SESSION["logged_in"] = false;
 session_destroy();
-header("Location: /cryland/index.html");
+header("Location: /cryland/index.php");
 ?>

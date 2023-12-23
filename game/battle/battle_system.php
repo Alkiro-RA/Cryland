@@ -197,7 +197,7 @@ if ($player['health'] <= 0 || $enemy['health'] <= 0)
 {
 // Inserting the buttons into the battle info HTML
     $battleInfoHTML .= '<div class="buttons">';
-    $battleInfoHTML .= '<button onclick="performAction(\'go_home\')">Go home</button>';
+    $battleInfoHTML .= '<button onclick="redirectToHome()">Go home</button>';
     $battleInfoHTML .= '</div>'; // Closing buttons div
 }
 else{
@@ -217,25 +217,8 @@ $battleInfoHTML .= '<div class="wrapper">
 $battleInfoHTML .= $_SESSION['battle_log'];
 $battleInfoHTML .= '</div></div></div>';
 
-// Check for the action performed
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
 
-    // Handle different actions based on the parameter
-    switch ($action) {
-        // Other cases...
 
-        case 'go_home':
-            // Redirect to the parent directory (one folder higher)
-            header("Location: ../"); // Modify the URL path if needed
-            exit(); // Terminate script execution after redirection
-            break;
-
-        default:
-            // Handle invalid action or no action provided
-            break;
-    }
-}
 
 // Echo or return the HTML content
 echo $battleInfoHTML; // This will output the HTML content directly

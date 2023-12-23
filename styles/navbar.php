@@ -35,7 +35,7 @@ else{
             
             </div>
             <div>
-                <a href="/Cryland/register/index.html">Register</a>
+                <a href="/Cryland/register/index.php">Register</a>
                 <a href="/Cryland">Log in</a>
             </div>
         </div>
