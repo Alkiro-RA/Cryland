@@ -4,39 +4,26 @@ require_once("../../other/authorization.php");
 require_once("../../data/db.php");
 try {
     // Get a list of potential enemies 
-    $char_level = $_SESSION['character']['level'];
-
-
-    echo "char_level = " . $char_level . "</br>";
-
-    
-    $sql = "SELECT * FROM Enemies WHERE lvl <= 3";
+    $char_level = $_SESSION['character']['level'] + 2;
+    $sql = "SELECT * FROM Enemies WHERE lvl <= :char_level";
     $stmt = $pdo->prepare($sql);
-    //$stmt->bindParam(":char_level", $char_level);
+    $stmt->bindParam(":char_level", $char_level);
     if (!$stmt->execute()) {
         throw new Exception();
     }
     $enemies = $stmt->fetchAll();
     $enemy_id_pool = array();
-    $i = 0;
     foreach ($enemies as $enemy) {
-
-
-        echo $enemy['name'] . "</br>";
-
-
         array_push($enemy_id_pool, $enemy['id']);
-
-
-        echo $enemy_id_pool[0];
     }
-    // Generate random enemy
-    $new_enemy = "";
+    // Draw random ID
     $chosen_enemy_id = $enemy_id_pool[rand(0, count($enemy_id_pool) - 1)];
     foreach ($enemies as $enemy) {
-        if ($enemy['id'] = $chosen_enemy_id) {
+        if ($enemy['id'] == $chosen_enemy_id) {
+            // Create new enemy
+            $new_enemy = $enemy;
             // Add enemy to session
-            $_SESSION['enemy'] = '';
+            $_SESSION['enemy'] = $enemy;
         }
     }
 } catch (Exception) {
@@ -68,11 +55,12 @@ try {
     <!-- Exploration -->
     <div>
         <h1> Dark Forest </h1>
-        <p>You've encountered new enemy! It is </p>
-        <?php echo $new_enemy['name'];?>
+        <?php echo "You've encountered new enemy! It is: {$new_enemy['name']} </br>";?>
         <!-- gdzieś tu zaczyna sie walka -->
         <?php $_SESSION['paralysis_counter'] = 0;
             $_SESSION['battle_log'] = '<p>Begin of battle with'.$new_enemy['name'].'</p>'; ?>
+            <a href="../battle/index.php">"You're no match for me!" <b>(Fight)</b>  </br> </a>
+            <a href="../">"Take me home please!" <b>(Flee)</b> </a>
     </div>
 
 </body>
