@@ -14,25 +14,7 @@ require_once("../../other/authorization.php");
     <!-- Your CSS styles here -->
     <style>
         /* Example styles */
-        .character-info {
-            width: 400px;
-            margin: auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 10px;
-        }
-        .character-info p {
-            text-align: left;
-            margin: 5px;
-        }
-        .upgrade-button {
-            display: inline-block;
-            padding: 5px 10px;
-            margin: 5px;
-        }
+
     </style>
     <!-- Your JavaScript -->
     <script>

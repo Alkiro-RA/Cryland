@@ -25,6 +25,30 @@
     background: #e80202;
 }
 
+.character-info {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1px; /* Max distance between player and enemy */
+    margin-top: 20px;
+    margin-bottom: 20px; /* Spacing between battle info and buttons */
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
+.character-info p {
+    text-align: right;
+    padding: 5px 10px;
+    margin: 10px;
+}
+
+.character-info button {
+    padding: 5px 10px;
+    margin: 5px;
+}
 .buttons {
     display: flex;
     justify-content: center;
@@ -34,6 +58,11 @@
 .buttons button {
     margin: 5px;
     padding: 10px 20px;
+}
+
+.unclickable-button{
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 .wrapper {

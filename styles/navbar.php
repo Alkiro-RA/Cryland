@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="/Cryland/other/navbar.css">
+    <link rel="stylesheet" href="/cryland/styles/navbar.css">
     <style>
         .flex-container {
             display: flex;
@@ -9,18 +9,41 @@
 </head>
 
 <?php
-if ($_SESSION['logged_in'])
+
+if($_SESSION['logged_in']&&$_SESSION['role_id'] == 2)
 {
     echo '<!-- Navigation bar -->
     <div class="navbar">
         <div class="flex-container">
             <div>
-                <a href="/Cryland/account">Home</a>
+                <a href="/Cryland/game">Home</a>
                 <a href="/Cryland/game/character">Character</a>
                 <a href="ranking/index.html">Ranking</a>
                 <a href="about/index.html">About</a>
             </div>
             <div>
+                <a href="/cryland/admin">Admin settings</a>
+                <a href="/cryland/account">Account</a>
+                <a class="logout" href="/cryland/other/logout.php">Logout</a>
+            </div>
+        </div>
+    </div>
+        ';
+}
+
+elseif ($_SESSION['logged_in'])
+{
+    echo '<!-- Navigation bar -->
+    <div class="navbar">
+        <div class="flex-container">
+            <div>
+                <a href="/Cryland/game">Home</a>
+                <a href="/Cryland/game/character">Character</a>
+                <a href="ranking/index.html">Ranking</a>
+                <a href="about/index.html">About</a>
+            </div>
+            <div>
+                <a href="/cryland/account">Account</a>
                 <a class="logout" href="/cryland/other/logout.php">Logout</a>
             </div>
         </div>

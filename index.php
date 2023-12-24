@@ -6,53 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Form</title>
+    <link rel="stylesheet" href="styles/login.css"
     <style>
-        .login-container {
-            width: 18%;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
 
-        .login-container h2 {
-            text-align: center;
-        }
-
-        .login-container input[type="text"],
-        .login-container input[type="password"],
-        .login-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        .login-container input[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-
-        .login-container input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .error-box{
-            text-align: center;
-            cursor: default;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 3px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            background-color: #cb0000;
-            color: antiquewhite;
-        }
     </style>
 </head>
 

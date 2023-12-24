@@ -29,7 +29,6 @@ try {
 <head>
     <meta charset="UTF-8">
     <title> Account manager </title>
-    <link rel="stylesheet" href="../other/navbar.css">
 </head>
 
 <body>

@@ -32,6 +32,7 @@ try {
             $_SESSION["logged_in"] = true;
             $_SESSION["user_id"] = $result["id"];
             $_SESSION["char_id"] = $result["charactersid"];
+            $_SESSION["role_id"] = $result["roleid"];
             header("Location: account/index.php");
         } else {
             $_SESSION["error"] = "Wrong password or email";

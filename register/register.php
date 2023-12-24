@@ -43,8 +43,8 @@ try {
 
     // Prep new character
     $sql = "INSERT INTO Characters
-    (name, level, exp, weaponsid, armorsid, attack, health, maxhealth, defense, potion, consumable, consumable_2) VALUES
-    (:char_name, 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1, 1)";
+    (name, level, exp, weaponsid, armorsid, attack, health, maxhealth, defense, potion, consumable) VALUES
+    (:char_name, 1, 0, NULL, NULL, 5, 5, 5, 2, 1, 1)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":char_name", $name);
 
@@ -63,12 +63,14 @@ try {
     // Fetch character's ID
     $result = $stmt->fetch();
     $char_id = $result['id'];
+    $role_id = 1;
 
     // Prep and execute SQL query
     $sql = "INSERT INTO Users 
-    (charactersid, nickname, email, password) VALUES
-    (:charactersid, :char_name, :email, :pass)";
+    (roleid, charactersid, nickname, email, password) VALUES
+    (:roleid, :charactersid, :char_name, :email, :pass)";
     $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":roleid", $role_id);
     $stmt->bindParam(":charactersid", $char_id);
     $stmt->bindParam(":char_name", $name);
     $stmt->bindParam(":email", $email);

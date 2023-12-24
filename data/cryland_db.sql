@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Gru 2023, 18:17
+-- Czas generowania: 24 Gru 2023, 01:00
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -69,17 +69,17 @@ CREATE TABLE `characters` (
   `maxhealth` int(255) NOT NULL,
   `defense` int(255) NOT NULL,
   `potion` int(60) NOT NULL,
-  `consumable` int(60) NOT NULL,
-  `consumable_2` int(11) NOT NULL
+  `consumable` int(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Zrzut danych tabeli `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `weaponsid`, `armorsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`, `consumable_2`) VALUES
-(1, 'Kyuba', 1, 0, NULL, NULL, 5, 4, 5, 5, 0, 0, 1),
-(3, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1, 1);
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `weaponsid`, `armorsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
+(1, 'Kyuba', 3, 26, NULL, NULL, 7, 1, 5, 5, 0, 0),
+(3, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1),
+(4, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -116,6 +116,14 @@ CREATE TABLE `roles` (
   `rolename` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Zrzut danych tabeli `roles`
+--
+
+INSERT INTO `roles` (`id`, `rolename`) VALUES
+(1, 'user'),
+(2, 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -124,7 +132,7 @@ CREATE TABLE `roles` (
 
 CREATE TABLE `users` (
   `id` int(255) NOT NULL,
-  `roleid` int(10) NOT NULL,
+  `roleid` int(255) NOT NULL,
   `charactersid` int(255) NOT NULL,
   `nickname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -136,7 +144,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
-(7, 0, 1, 'Kyuba', 'test@o2.pl', '$2y$10$2TdAFI0xRzcwnYUgqc2Qf.4lTX9MVmZ/QbLdxJbjANxHrclYAhmpO');
+(8, 2, 1, 'Kyuba', 'test@o2.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m');
 
 -- --------------------------------------------------------
 
@@ -193,8 +201,8 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `roleid` (`roleid`),
-  ADD KEY `charactersid` (`charactersid`);
+  ADD KEY `charactersid` (`charactersid`),
+  ADD KEY `roleid` (`roleid`);
 
 --
 -- Indeksy dla tabeli `weapons`
@@ -222,7 +230,7 @@ ALTER TABLE `bosses`
 -- AUTO_INCREMENT dla tabeli `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `enemies`
@@ -234,13 +242,13 @@ ALTER TABLE `enemies`
 -- AUTO_INCREMENT dla tabeli `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT dla tabeli `weapons`
@@ -260,16 +268,11 @@ ALTER TABLE `characters`
   ADD CONSTRAINT `characters_ibfk_2` FOREIGN KEY (`weaponsid`) REFERENCES `weapons` (`id`);
 
 --
--- Ograniczenia dla tabeli `roles`
---
-ALTER TABLE `roles`
-  ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`roleid`);
-
---
 -- Ograniczenia dla tabeli `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`charactersid`) REFERENCES `characters` (`id`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`charactersid`) REFERENCES `characters` (`id`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`roleid`) REFERENCES `roles` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

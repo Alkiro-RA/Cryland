@@ -40,17 +40,11 @@ try {
 <head>
     <meta charset="UTF-8">
     <title> Overworld </title>
-    <link rel="stylesheet" href="../../other/navbar.css">
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="ranking/index.html">Ranking</a>
-        <a href="about/index.html">About</a>
-        <a class="logout" href="/cryland/other/logout.php">Logout</a>
-    </div>
+    <?php require_once("../../styles/navbar.php"); ?>
 
     <!-- Exploration -->
     <div>

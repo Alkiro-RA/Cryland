@@ -1,6 +1,8 @@
 <!-- Authorization -->
 <?php
 require_once("../../other/authorization.php");
+if($_SESSION['enemy']['health']<=0 || ($_SESSION['character']['health']<=0)) {unset($_SESSION['enemy']);}
+if(!isset($_SESSION['enemy'])) header("Location: ../");
 ?>
 
 <!-- HTML -->
@@ -28,7 +30,7 @@ require_once("../../other/authorization.php");
                     }, 1); // Adjust this delay as needed
                 }
             };
-            xhttp.open("GET", "battle_system.php", true); // Replace with the actual path
+            xhttp.open("GET", "battle_controller.php", true); // Replace with the actual path
             xhttp.send();
         }
 
@@ -39,7 +41,7 @@ require_once("../../other/authorization.php");
                     loadBattleInfo(); // Refresh battle information after performing the action
                 }
             };
-            xhttp.open("GET", "battle_system.php?action=" + action, true); // Replace with the actual path
+            xhttp.open("GET", "battle_controller.php?action=" + action, true); // Replace with the actual path
             xhttp.send();
         }
 
@@ -80,3 +82,7 @@ require_once("../../other/authorization.php");
 </body>
 
 </html>
+
+<?php
+
+?>
