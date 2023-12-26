@@ -9,26 +9,31 @@ require_once ("admin_verification.php");
     <title>Admin page</title>
     <link rel="stylesheet" href="../styles/style.css">
     <style>
-        /* Style the navigation bar */
-        .sidenav {
-            height: 100%;
+        .sidebar {
+            margin: 0;
+            padding: 0;
             width: 200px;
-            left: 0;
-            top: 0;
             background-color: #f1f1f1;
-            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            overflow: auto;
         }
 
-        .sidenav a {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #818181;
+        .sidebar a {
             display: block;
+            color: black;
+            padding: 16px;
+            text-decoration: none;
         }
 
-        .sidenav a:hover {
-            color: #000;
+        .sidebar a.active {
+            background-color: #343434;
+            color: white;
+        }
+
+        .sidebar a:hover:not(.active) {
+            background-color: #555;
+            color: white;
         }
 
         /* Center content */
@@ -91,6 +96,15 @@ require_once ("admin_verification.php");
             // Modify the path as per your directory structure
             return controller; // Example: 'controllers/enemy_edit_controller.php'
         }
+
+        // Add this function to toggle the 'active' class
+        function toggleActiveClass(linkElement) {
+            var sidebarLinks = document.getElementsByClassName('sidebar')[0].getElementsByTagName('a');
+            for (var i = 0; i < sidebarLinks.length; i++) {
+                sidebarLinks[i].classList.remove('active');
+            }
+            linkElement.classList.add('active');
+        }
     </script>
 
 </head>
@@ -99,16 +113,16 @@ require_once ("admin_verification.php");
     <?php require_once("../styles/navbar.php")?>
     <div>
         <!-- Left side navigation bar -->
-        <div class="sidenav">
-            <a href="#" onclick="showTable('enemies')">Enemies</a>
-            <a href="#" onclick="showTable('bosses')">Bosses</a>
-            <a href="#" onclick="showTable('users')">Users</a>
-            <a href="#" onclick="showTable('weapons')">Weapons</a>
-            <a href="#" onclick="showTable('armors')">Armors</a>
+        <div class="sidebar">
+            <a href="#enemies" onclick="showTable('enemies'); toggleActiveClass(this)">Enemies</a>
+            <a href="#bosses" onclick="showTable('bosses'); toggleActiveClass(this)">Bosses</a>
+            <a href="#users" onclick="showTable('users'); toggleActiveClass(this)">Users</a>
+            <a href="#weapons" onclick="showTable('weapons'); toggleActiveClass(this)">Weapons</a>
+            <a href="#armors" onclick="showTable('armors'); toggleActiveClass(this)">Armors</a>
         </div>
 
         <!-- Content area to display tables -->
-        <div id="actionContent">
+        <div class="content" id="actionContent">
 
         </div>
     </div>

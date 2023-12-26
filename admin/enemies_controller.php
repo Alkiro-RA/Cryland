@@ -13,7 +13,7 @@ try {
     $enemies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Process the retrieved data (for example, create an HTML table)
-    $tableHTML = '<div  class="content"><button onclick="redirectToAction(\'enemies\', \'add\')">Add</button>
+    $tableHTML = '<div><button onclick="redirectToAction(\'enemies\', \'add\')">Add</button>
 <table>';
     $tableHTML .= '<tr><th>ID</th><th>Name</th><th>Level</th><th>Attack</th><th>Health</th><th>Defense</th><th>Actions</th></tr>';
 
