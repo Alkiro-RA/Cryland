@@ -1,22 +1,24 @@
-<?php
-require_once("../other/authorization.php");
-?>
 <!-- HTML -->
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <title> Ranking </title>
-    <link rel="stylesheet" href="../../styles/style.css">
+    <title> Player Ranking </title>
+    <link rel="stylesheet" href="./ranking.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
-    <div class="ranking">
-        <ul>
-
-        </ul>
-    </div>
+    <section id="ranking">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Level</th>
+            </tr>
+            <?php require_once("./ranking_controller.php"); ?>
+        </table>
+    </section>
 </body>
 
 </html>

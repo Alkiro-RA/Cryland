@@ -1,5 +1,10 @@
 /* Updated styles */
 
+body {
+    background-color: #1F1B2E;
+    color: #ffffff;
+}
+
 .battle-info {
     display: flex;
     justify-content: center;

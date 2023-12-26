@@ -53,7 +53,8 @@ else{
     <div class="navbar">
         <div class="flex-container">
             <div>
-            
+                <a href="/Cryland/">Home</a>
+                <a href="/Cryland/ranking/">Ranking</a>
             </div>
             <div>
                 <a href="/Cryland/register/index.php">Register</a>
