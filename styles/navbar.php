@@ -18,8 +18,7 @@ if($_SESSION['logged_in']&&$_SESSION['role_id'] == 2)
             <div>
                 <a href="/Cryland/game">Home</a>
                 <a href="/Cryland/game/character">Character</a>
-                <a href="ranking/index.html">Ranking</a>
-                <a href="about/index.html">About</a>
+                <a href="/Cryland/ranking/">Ranking</a>
             </div>
             <div>
                 <a href="/cryland/admin">Admin settings</a>
@@ -39,8 +38,7 @@ elseif ($_SESSION['logged_in'])
             <div>
                 <a href="/Cryland/game">Home</a>
                 <a href="/Cryland/game/character">Character</a>
-                <a href="ranking/index.html">Ranking</a>
-                <a href="about/index.html">About</a>
+                <a href="/Cryland/ranking/">Ranking</a>
             </div>
             <div>
                 <a href="/cryland/account">Account</a>
