@@ -1,0 +1,36 @@
+.account-container {
+    width: 300px;
+    margin: 5% auto;
+    padding: 20px;
+    border: 3px solid #040418;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black;
+    text-align: center;
+}
+
+.detail {
+    border: 2px inset;
+    margin: 10px auto;
+    background-color: #ffffffd0;
+}
+
+.detail p {
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#play-button {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    padding: 0 0 0px 0;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: black;
+    min-width: 300px;
+    color: white;
+}
+

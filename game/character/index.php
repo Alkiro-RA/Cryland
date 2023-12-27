@@ -50,7 +50,7 @@ require_once("../../other/authorization.php");
 
 <body>
     <!-- Navigation bar -->
-    <?php include_once("../../styles/navbar.php");?>
+    <?php include_once("../../other/navbar.php");?>
     <!-- Character -->
     <div id="characterInfo">
 

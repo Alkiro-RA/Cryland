@@ -1,8 +1,9 @@
 <?php
-// Db configuration
-require_once("../data/db.php");
+session_start();
 
 try {
+    // Db configuration
+    require_once("../data/db.php");
     // Get characters' data from db
     $sql = "SELECT name, level FROM Characters";
     $stmt = $pdo->prepare($sql);
@@ -17,9 +18,10 @@ try {
     // Put data into HTML's table
     foreach ($characters as $char) {
         echo 
-        "<tr>
-            <td>{$char['name']}</td>
+        "<tr id='row'>
+            <td id='name'>{$char['name']}</td>
             <td>{$char['level']}</td>
+            <td></td>
         </tr>";
     }
 } 

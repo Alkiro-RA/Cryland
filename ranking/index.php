@@ -5,20 +5,26 @@
 <head>
     <meta charset="UTF-8">
     <title> Player Ranking </title>
-    <link rel="stylesheet" href="./ranking.css">
+    <link rel="stylesheet" href="../styles/ranking.css">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
-    <section id="ranking">
+    <?php 
+    $_SESSION['logged_in'] = false; 
+    include_once("../other/navbar.php"); ?>
+    <div class="ranking-container">
+        <h2> Top Players </h2>
         <table>
             <tr>
-                <th>Name</th>
+                <th id=name>Name</th>
                 <th>Level</th>
+                <th>Bosses Defeated</th>
             </tr>
             <?php require_once("./ranking_controller.php"); ?>
         </table>
-    </section>
+        <button id="back-button" onclick="window.location.href='../index.php'">Back</button>
+    </div>
 </body>
 
 </html>

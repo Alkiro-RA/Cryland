@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <style>
 
     </style>
@@ -16,7 +17,7 @@
     <!-- Navigation bar -->
     <?php
     $_SESSION['logged_in'] = false;
-    include_once("styles/navbar.php");
+    include_once("other/navbar.php");
 
     ?>
     <!-- Login form  -->

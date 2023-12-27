@@ -1,10 +1,11 @@
 .login-container {
-    width: 18%;
+    width: 300px;
     margin: 5% auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 3px solid #040418;
     border-radius: 5px;
     background-color: #f9f9f9;
+    color: black;
 }
 
 .login-container h2 {
@@ -12,8 +13,7 @@
 }
 
 .login-container input[type="text"],
-.login-container input[type="password"],
-.login-container input[type="submit"] {
+.login-container input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -23,9 +23,15 @@
 }
 
 .login-container input[type="submit"] {
-    background-color: #007bff;
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: black;
+    min-width: 300px;
     color: white;
-    cursor: pointer;
 }
 
 .login-container input[type="submit"]:hover {
@@ -41,6 +47,6 @@
     border-radius: 3px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    background-color: #cb0000;
+    background-color: #c21c1c;
     color: antiquewhite;
 }

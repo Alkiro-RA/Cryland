@@ -74,7 +74,7 @@ if(!isset($_SESSION['enemy'])) header("Location: ../");
 
 <body>
     <!-- Navigation bar -->
-    <?php include_once("../../styles/navbar.php");?>
+    <?php include_once("../../other/navbar.php");?>
     <!-- Battle -->
     <div id="battleInfo">
         <!-- Battle information will be displayed here -->

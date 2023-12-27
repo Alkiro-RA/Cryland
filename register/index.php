@@ -5,17 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Register Form</title>
-    <link rel="stylesheet" href="../styles/login.css"
-    <style>
-
-    </style>
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 
 <body>
     <!-- Navigation bar -->
     <?php
     $_SESSION['logged_in'] = false;
-    include_once("../styles/navbar.php");?>
+    include_once("../other/navbar.php");?>
     <!-- Register form -->
     <div class="login-container">
         <h2>Register</h2>
