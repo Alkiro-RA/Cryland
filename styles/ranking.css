@@ -1,33 +1,9 @@
-.ranking-container {
-    width: 300px;
-    margin: 5% auto;
-    padding: 20px;
-    border: 3px solid #040418;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: black;
-    text-align: center;
-}
-
 table {
     width: 250px;
-    margin: 0px auto;
+    margin: 3px auto;
 }
 
 table, th, td {
     border: 1px solid #1b1b32;
-    margin: 10px;
-}
-
-#back-button {
-    display: block;
-    width: 60%;
-    margin: 1em auto;
-    padding: 0 0 0px 0;
-    height: 2em;
-    font-size: 1.1rem;
-    background-color: #3b3b4f;
-    border-color: black;
-    min-width: 300px;
-    color: white;
+    margin: 20px;
 }

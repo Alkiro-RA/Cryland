@@ -1,42 +1,25 @@
-/* Updated styles */
+/* Main style theme*/
 
 body {
     background-color: #1F1B2E;
     color: #ffffff;
 }
 
-
-
-.character-info {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 1px; /* Max distance between player and enemy */
-    margin-top: 20px;
-    margin-bottom: 20px; /* Spacing between battle info and buttons */
-}
-h1 {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-bottom: 10px;
-}
-.character-info p {
-    text-align: right;
-    padding: 5px 10px;
-    margin: 10px;
+.main-window {
+    width: 300px;
+    margin: 5% auto;
+    padding: 20px;
+    border: 3px solid #040418;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black;
+    text-align: center;
 }
 
-.character-info button {
-    padding: 5px 10px;
-    margin: 5px;
-}
-
-
-.battle-buttons button {
+.main-window button {
     display: block;
     width: 60%;
-    margin: 0.5em auto;
+    margin: 1em auto;
     padding: 0 0 0px 0;
     height: 2em;
     font-size: 1.1rem;
@@ -45,10 +28,3 @@ h1 {
     min-width: 300px;
     color: white;
 }
-
-.unclickable-button{
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-

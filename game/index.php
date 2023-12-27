@@ -18,7 +18,7 @@ require_once("../other/authorization.php");
     <!-- Navigation bar -->
     <?php include_once("../other/navbar.php"); ?>
     <!-- Main menu -->
-    <div class="game-container">
+    <div class="main-window">
         <h2> Home </h2>
         <p> Your character is at home. Decide what to do next. </p>
         <div class="options">

@@ -49,7 +49,7 @@ try {
     <?php include_once("../../other/navbar.php"); ?>
 
     <!-- Exploration -->
-    <div class="world-container">
+    <div class="main-window">
         <h2> Dark Forest </h1>
             <p>"You've encountered an enemy! It is:</p>
             <p><b><?php echo  $new_enemy['name']; ?></b></p>

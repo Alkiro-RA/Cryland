@@ -36,7 +36,7 @@ try {
     <!-- Navigation bar -->
     <?php require_once("../other/navbar.php") ?>
 
-    <div class="account-container">
+    <div class="main-window">
         <h2>Character Details</h2>
         <div class=details-container>
             <article class="detail">
@@ -52,7 +52,7 @@ try {
                 <p><?php echo $character["exp"]; ?></p>
             </article>
         </div>
-        <button id="play-button" onclick="window.location.href='../game/index.php'">Play</button>
+        <button onclick="window.location.href='../game/index.php'">Play</button>
     </div>
 
 </body>

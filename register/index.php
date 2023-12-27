@@ -15,6 +15,7 @@
     $_SESSION['logged_in'] = false;
     include_once("../other/navbar.php");?>
     <!-- Register form -->
+    <div class="main-window">
     <div class="login-container">
         <h2>Register</h2>
         <form action="register.php" method="post">
@@ -39,6 +40,7 @@
         else{
             echo '<div></div>';
         }?>
+    </div>
     </div>
 </body>
 

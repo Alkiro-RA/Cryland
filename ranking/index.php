@@ -13,7 +13,7 @@
     <?php 
     $_SESSION['logged_in'] = false; 
     include_once("../other/navbar.php"); ?>
-    <div class="ranking-container">
+    <div class="main-window">
         <h2> Top Players </h2>
         <table>
             <tr>
@@ -23,7 +23,7 @@
             </tr>
             <?php require_once("./ranking_controller.php"); ?>
         </table>
-        <button id="back-button" onclick="window.location.href='../index.php'">Back</button>
+        <button onclick="window.location.href='../index.php'">Back</button>
     </div>
 </body>
 

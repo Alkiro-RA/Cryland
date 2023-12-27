@@ -88,7 +88,7 @@ try{
 }
 
 $characterInfoHTML = '
-<h1>'.$character['name'].'</h1>
+<h2>'.$character['name'].'</h2>
     <div class="character-info">                
         <div>
             <p>Attack: '.$character['attack'].' </p>
@@ -115,7 +115,7 @@ $characterInfoHTML .=        '</div>
         <p>Potions: '.$character['potion'].'</p>
         <p>Scrolls: '.$character['consumable'].'</p>
     </div>';
-$characterInfoHTML .='<div class="buttons">
+$characterInfoHTML .='<div class="char-buttons">
         <button onclick="upgradeAttribute(\'save\')">Save</button>
         <button onclick="upgradeAttribute(\'reset\')">Reset</button>';
 if($character['exp']<2){

@@ -11,10 +11,10 @@ require_once("../../other/authorization.php");
     <meta charset="UTF-8">
     <title> Character </title>
     <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/character.css">
     <!-- Your CSS styles here -->
     <style>
         /* Example styles */
-
     </style>
     <!-- Your JavaScript -->
     <script>
@@ -50,11 +50,13 @@ require_once("../../other/authorization.php");
 
 <body>
     <!-- Navigation bar -->
-    <?php include_once("../../other/navbar.php");?>
+    <?php include_once("../../other/navbar.php"); ?>
     <!-- Character -->
-    <div id="characterInfo">
-
+    <div class="character-window">
+        <div id="characterInfo">
+        </div>
     </div>
+
 </body>
 
 </html>

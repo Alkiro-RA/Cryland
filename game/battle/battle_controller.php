@@ -168,12 +168,10 @@ try {
         }
         else{
             // Inserting the buttons into the battle info HTML
-            $battleInfoHTML .= '<div class="battle-buttons">';
             $battleInfoHTML .= '<button onclick="performAction(\'attack\')">Attack</button>';
             $battleInfoHTML .= '<button onclick="performAction(\'potion\')">Use Potion</button>';
             $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Use paralysis bomb</button>';
             $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Use fire bomb</button>';
-            $battleInfoHTML .= '</div>'; // Closing buttons div
         }
 
 

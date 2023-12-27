@@ -18,7 +18,7 @@ require_once("../../other/authorization.php");
     <!-- Navigation bar -->
     <?php include_once("../../other/navbar.php");?>
     <!-- World -->
-    <div class="world-container">
+    <div class="main-window">
         <h2> Dark Forest </h2>
         <p> You've left your village and now you're standing at the entrance of the infamous Dark Forest. </p>
         <div class="options">
