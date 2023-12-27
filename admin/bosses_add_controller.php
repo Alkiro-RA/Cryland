@@ -5,33 +5,33 @@ require_once("admin_verification.php");
 
 
 // Variables to hold the input values
-$name = $lvl = $attack = $health = $defense = "";
+$name = $attack = $health = $defense = $consumable = "";
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get and sanitize form input
     $name = cleanInput($_POST["name"]);
-    $lvl = cleanInput($_POST["lvl"]);
     $attack = cleanInput($_POST["attack"]);
     $health = cleanInput($_POST["health"]);
     $defense = cleanInput($_POST["defense"]);
+    $consumable = cleanInput($_POST["consumable"]);
 
     // Validate input
-    if (empty($name) || $lvl < 0 || $attack < 0 || $health < 0 || $defense < 0) {
+    if (empty($name) || $attack < 0 || $health < 0 || $defense < 0 || $consumable < 0) {
         $_SESSION['error'] = "Please enter valid values. Negative values are not allowed.";
         header("Location: index.php");
     } else {
         try {
             // Prepare the SQL statement to insert data
-            $stmt = $pdo->prepare("INSERT INTO enemies (name, lvl, attack, health, maxhealth, defense) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$name, $lvl, $attack, $health, $health, $defense]);
-            // Redirect to the enemies table view after adding the record
-            $_SESSION['success'] = "$name added into enemies";
+            $stmt = $pdo->prepare("INSERT INTO bosses (name, attack, health, maxhealth, defense, consumable) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$name, $attack, $health, $health, $defense, $consumable]);
+            // Redirect to the bosses table view after adding the record
+            $_SESSION['success'] = "$name added into bosses";
             header("Location: index.php");
             exit();
         } catch (PDOException $e) {
             $_SESSION['error'] = "Error: " . $e->getMessage();
-
+            header("Location: index.php");
         }
     }
 }
@@ -46,20 +46,17 @@ function cleanInput($data) {
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Add Enemy</title>
+    <title>Add boss</title>
     <!-- Add your CSS styles here -->
     <style>
         /* Your CSS styles for the form */
     </style>
 </head>
 <body>
-<h2>Add Enemy</h2>
+<h2>Add boss</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" value="<?php echo $name; ?>"><br><br>
-
-    <label for="lvl">Level:</label>
-    <input type="number" id="lvl" name="lvl" value="<?php echo $lvl; ?>" min="1"><br><br>
 
     <label for="attack">Attack:</label>
     <input type="number" id="attack" name="attack" value="<?php echo $attack; ?>" min="1"><br><br>
@@ -70,8 +67,11 @@ function cleanInput($data) {
     <label for="defense">Defense:</label>
     <input type="number" id="defense" name="defense" value="<?php echo $defense; ?>" min="0"><br><br>
 
-    <input type="submit" value="Add Enemy">
+    <label for="consumable">Consumable:</label>
+    <input type="number" id="consumable" name="consumable" value="<?php echo $consumable; ?>" min="0"><br><br>
+
+    <input type="submit" value="Add boss">
 </form>
-<button onclick="showTable('enemies');">Go back</button>
+<button onclick="showTable('bosses');">Go back</button>
 </body>
 </html>

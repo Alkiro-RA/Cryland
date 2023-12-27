@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Login Form</title>
     <link rel="stylesheet" href="styles/login.css">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
     <style>
 
     </style>

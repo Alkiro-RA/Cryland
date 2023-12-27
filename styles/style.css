@@ -18,6 +18,11 @@ button {
     color: white;
 }
 
+button:hover {
+    cursor: pointer;
+    background-color: #606080;
+}
+
 .main-window {
     width: 300px;
     margin: 5% auto;

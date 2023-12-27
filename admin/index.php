@@ -55,7 +55,71 @@ require_once ("admin_verification.php");
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #3b3b4f;
+        }
+
+        button,
+        input[type="submit"]{
+            display: inline;
+            height: auto;
+            width: auto;
+            min-width: auto;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #3b3b4f;
+            border-color: black;
+            color: white;
+        }
+
+        button:hover,
+        input[type="submit"]:hover{
+            cursor: pointer;
+            background-color: #606080;
+        }
+
+        /*FORMS*/
+        /* Main style theme */
+
+        /* General form styles */
+        form {
+            padding: 20px;
+            background-color: #3b3b4f;
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 80%;
+            margin: 0;
+        }
+
+        /* Input fields */
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #66afe9;
+            /* Example: Change border color on focus */
+        }
+
+        .error-box {
+            background-color: #ff6347;
+            margin-top: 5px;
+            padding: 10px 20px
+        }
+
+        .success-box{
+            background-color: #039f0c;
+            margin-top: 5px;
+            padding: 10px 20px
         }
     </style>
     <!-- JavaScript to handle displaying different tables -->
@@ -110,20 +174,33 @@ require_once ("admin_verification.php");
 </head>
 <body>
     <!-- Navigation bar -->
-    <?php require_once("../styles/navbar.php")?>
+    <?php require_once("../other/navbar.php")?>
     <div>
         <!-- Left side navigation bar -->
         <div class="sidebar">
             <a href="#enemies" onclick="showTable('enemies'); toggleActiveClass(this)">Enemies</a>
             <a href="#bosses" onclick="showTable('bosses'); toggleActiveClass(this)">Bosses</a>
             <a href="#users" onclick="showTable('users'); toggleActiveClass(this)">Users</a>
+            <a href="#characters" onclick="showTable('characters'); toggleActiveClass(this)">Characters</a>
             <a href="#weapons" onclick="showTable('weapons'); toggleActiveClass(this)">Weapons</a>
             <a href="#armors" onclick="showTable('armors'); toggleActiveClass(this)">Armors</a>
         </div>
 
+
+
         <!-- Content area to display tables -->
         <div class="content" id="actionContent">
-
+            <?php if (isset($_SESSION["error"])) {
+                echo '<div class="error-box">' . $_SESSION["error"] . '</div>';
+                unset($_SESSION["error"]); // Clear the error message after displaying it
+            }
+            elseif (isset($_SESSION['success'])) {
+                echo '<div class="success-box">' . $_SESSION["success"] . '</div>';
+                unset($_SESSION["success"]); // Clear the error message after displaying it
+            }
+            else{
+                echo '<div></div>';
+            }?>
         </div>
     </div>
 

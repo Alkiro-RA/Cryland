@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 24 Gru 2023, 01:00
+-- Czas generowania: 28 Gru 2023, 00:03
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -51,6 +51,13 @@ CREATE TABLE `bosses` (
   `consumable` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Zrzut danych tabeli `bosses`
+--
+
+INSERT INTO `bosses` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`, `consumable`) VALUES
+(1, 'Skeleton King', 15, 50, 50, 5, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +69,7 @@ CREATE TABLE `characters` (
   `name` varchar(60) NOT NULL,
   `level` int(255) NOT NULL,
   `exp` int(255) NOT NULL,
+  `coins` int(255) NOT NULL,
   `weaponsid` int(11) DEFAULT NULL,
   `armorsid` int(11) DEFAULT NULL,
   `attack` int(255) NOT NULL,
@@ -76,10 +84,8 @@ CREATE TABLE `characters` (
 -- Zrzut danych tabeli `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `weaponsid`, `armorsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
-(1, 'Kyuba', 3, 26, NULL, NULL, 7, 1, 5, 5, 0, 0),
-(3, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 5, 1, 1),
-(4, 'Kyuba', 1, 0, NULL, NULL, 5, 5, 5, 2, 1, 1);
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `armorsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
+(1, 'Kyuba', 3, 26, 0, NULL, NULL, 7, 1, 5, 5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -103,7 +109,10 @@ CREATE TABLE `enemies` (
 
 INSERT INTO `enemies` (`id`, `lvl`, `name`, `attack`, `health`, `maxhealth`, `defense`) VALUES
 (1, 2, 'Goblin', 2, 6, 6, 2),
-(2, 1, 'Wolf', 2, 5, 5, 1);
+(2, 1, 'Wolf', 2, 5, 5, 1),
+(6, 3, 'Hobgoblin', 5, 10, 10, 4),
+(7, 2, 'Skeleton', 5, 3, 3, 0),
+(11, 3, 'Armored Skeleton', 5, 5, 5, 10);
 
 -- --------------------------------------------------------
 
@@ -224,7 +233,7 @@ ALTER TABLE `armors`
 -- AUTO_INCREMENT dla tabeli `bosses`
 --
 ALTER TABLE `bosses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT dla tabeli `characters`
@@ -236,7 +245,7 @@ ALTER TABLE `characters`
 -- AUTO_INCREMENT dla tabeli `enemies`
 --
 ALTER TABLE `enemies`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT dla tabeli `roles`

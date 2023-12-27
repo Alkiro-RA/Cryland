@@ -3,7 +3,7 @@ session_start();
 // Check access rights
 if(has_no_access()){
     // Przed ścieżką zawsze: '/'
-    header("Location: /cryland/index.html"); 
+    header("Location: /Cryland");
     exit();
 }
 

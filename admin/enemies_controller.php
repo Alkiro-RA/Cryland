@@ -1,6 +1,8 @@
 <?php
-// Database connection
 require_once("../data/db.php");
+require_once("../other/authorization.php");
+require_once("admin_verification.php");
+
 
 try {
     // Prepare the SQL statement
@@ -25,7 +27,7 @@ try {
         $tableHTML .= '<td>' . $enemy['attack'] . '</td>';
         $tableHTML .= '<td>' . $enemy['health'] . '</td>';
         $tableHTML .= '<td>' . $enemy['defense'] . '</td>';
-        $tableHTML .= '<td><button onclick="redirectToAction(\'enemies\',\'edit\',' . $enemy['id'] . ')">Edit</button><button onclick="deleteEnemy(\'enemies\',\'delete\',' . $enemy['id'] . ')">Delete</button></td>';
+        $tableHTML .= '<td><button onclick="redirectToAction(\'enemies\',\'edit\',' . $enemy['id'] . ')">Edit</button><button onclick="redirectToAction(\'enemies\',\'delete\',' . $enemy['id'] . ')">Delete</button></td>';
         $tableHTML .= '</tr>';
     }
 
