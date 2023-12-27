@@ -5,6 +5,19 @@ body {
     color: #ffffff;
 }
 
+button {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    padding: 0 0 0px 0;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: black;
+    min-width: 300px;
+    color: white;
+}
+
 .main-window {
     width: 300px;
     margin: 5% auto;
@@ -16,15 +29,7 @@ body {
     text-align: center;
 }
 
-.main-window button {
-    display: block;
-    width: 60%;
-    margin: 1em auto;
-    padding: 0 0 0px 0;
-    height: 2em;
-    font-size: 1.1rem;
-    background-color: #3b3b4f;
-    border-color: black;
-    min-width: 300px;
-    color: white;
+.unclickable-button{
+    pointer-events: none;
+    opacity: 0.5;
 }

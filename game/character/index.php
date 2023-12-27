@@ -52,9 +52,8 @@ require_once("../../other/authorization.php");
     <!-- Navigation bar -->
     <?php include_once("../../other/navbar.php"); ?>
     <!-- Character -->
-    <div class="character-window">
-        <div id="characterInfo">
-        </div>
+    <div class="main-window" id="characterInfo">
+        
     </div>
 
 </body>

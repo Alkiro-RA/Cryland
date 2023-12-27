@@ -97,14 +97,14 @@ $characterInfoHTML = '
         </div>  
         <div>';
 if($character['exp']<$character['level']){
-    $characterInfoHTML .= '<button class="unclickable-button" onclick="upgradeAttribute(\'attack\')">+</button><br/>
-            <button class="unclickable-button" onclick="upgradeAttribute(\'health\')">+</button><br/>
-            <button class="unclickable-button" onclick="upgradeAttribute(\'defense\')">+</button><br/>';
+    $characterInfoHTML .= '<button class="unclickable-button" id="add-button" onclick="upgradeAttribute(\'attack\')">+</button><br/>
+            <button class="unclickable-button" id="add-button" onclick="upgradeAttribute(\'health\')">+</button><br/>
+            <button class="unclickable-button" id="add-button" onclick="upgradeAttribute(\'defense\')">+</button><br/>';
 }
 else{
-    $characterInfoHTML .= '<button onclick="upgradeAttribute(\'attack\')">+</button><br/>
-            <button onclick="upgradeAttribute(\'health\')">+</button><br/>
-            <button onclick="upgradeAttribute(\'defense\')">+</button><br/>';
+    $characterInfoHTML .= '<button id="add-button" onclick="upgradeAttribute(\'attack\')">+</button><br/>
+            <button id="add-button" onclick="upgradeAttribute(\'health\')">+</button><br/>
+            <button id="add-button" onclick="upgradeAttribute(\'defense\')">+</button><br/>';
 }
 
 $characterInfoHTML .=        '</div>    

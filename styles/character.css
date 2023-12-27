@@ -1,25 +1,11 @@
-.character-window {
+.main-window {
     width: 500px;
-    margin: 5% auto;
-    padding: 20px;
-    border: 3px solid #040418;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: black;
-    text-align: center;
 }
 
-#back-button {
-    display: block;
-    width: 60%;
-    margin: 1em auto;
-    padding: 0 0 0px 0;
-    height: 2em;
-    font-size: 1.1rem;
-    background-color: #3b3b4f;
-    border-color: black;
-    min-width: 300px;
-    color: white;
+#add-button {
+    min-width: 35px;
+    padding: 5px 5px;
+    margin: 5px;
 }
 
 .character-info {
@@ -42,27 +28,5 @@ h3 {
     text-align: right;
     padding: 5px 10px;
     margin: 10px;
-}
-
-.unclickable-button{
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.character-info button {
-    padding: 5px 10px;
-    margin: 5px;
-}
-
-.char-buttons button { 
-    display: block;
-    width: 60%;
-    margin: 0.5em auto;
-    padding: 0 0 0px 0;
-    height: 2em;
-    font-size: 1.1rem;
-    background-color: #3b3b4f;
-    border-color: black;
-    min-width: 300px;
-    color: white;
+    margin-bottom: 35px;
 }
