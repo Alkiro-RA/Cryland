@@ -5,30 +5,7 @@ body {
     color: #ffffff;
 }
 
-.battle-info {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 50px; /* Max distance between player and enemy */
-    margin-top: 20px;
-    margin-bottom: 20px; /* Spacing between battle info and buttons */
-}
 
-.player-info, .enemy-info {
-    width: 20%; /* Adjust width as needed */
-    border: 5px solid #ccc;
-    padding: 10px;
-}
-
-.player-info{
-    border-color: green;
-    background: yellowgreen;
-}
-
-.enemy-info{
-    border-color: #6e0000;
-    background: #e80202;
-}
 
 .character-info {
     display: flex;
@@ -54,15 +31,19 @@ h1 {
     padding: 5px 10px;
     margin: 5px;
 }
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.buttons button {
-    margin: 5px;
-    padding: 10px 20px;
+
+.battle-buttons button {
+    display: block;
+    width: 60%;
+    margin: 0.5em auto;
+    padding: 0 0 0px 0;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: black;
+    min-width: 300px;
+    color: white;
 }
 
 .unclickable-button{
@@ -70,28 +51,4 @@ h1 {
     opacity: 0.5;
 }
 
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin : 10px;/* Adjust the height as needed */
-}
 
-.scrollable-container {
-    width: 300px; /* Define your container width */
-    height: 200px; /* Define your container height */
-    overflow: auto; /* Enable scrolling for overflow content */
-    border: 1px solid #ccc; /* Optional border styling */
-}
-
-.content {
-    margin: 5px;
-    justify-content: center;
-    align-items: center;
-    /* Optional styling for the content inside the scrollable container */
-}
-
-.paralized{
-    background-color: gold;
-    color: black;
-}

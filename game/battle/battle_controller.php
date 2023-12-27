@@ -148,7 +148,7 @@ try {
         $battleInfoHTML .= '<h2>' . $player['name'] . '</h2>';
         $battleInfoHTML .= '<p>HP: ' . $player['health'] . ' / ' . $player['maxhealth'] . '</p>';
         $battleInfoHTML .= '<p>Potions: ' . $player['potion'] . '</p>';
-        $battleInfoHTML .= '<p>Magic scrolls: ' . $player['consumable'] . '</p>';
+        $battleInfoHTML .= '<p>Scrolls: ' . $player['consumable'] . '</p>';
         $battleInfoHTML .= '</div>';
         $battleInfoHTML .= '<div class="enemy-info">';
         $battleInfoHTML .= '<h2>' . $enemy['name'] . '</h2>';
@@ -162,13 +162,13 @@ try {
         if ($player['health'] <= 0 || $enemy['health'] <= 0)
         {
             // Inserting the buttons into the battle info HTML
-            $battleInfoHTML .= '<div class="buttons">';
+            $battleInfoHTML .= '<div class="battle-buttons">';
             $battleInfoHTML .= '<button onclick="redirectToHome()">Go home</button>';
             $battleInfoHTML .= '</div>'; // Closing buttons div
         }
         else{
             // Inserting the buttons into the battle info HTML
-            $battleInfoHTML .= '<div class="buttons">';
+            $battleInfoHTML .= '<div class="battle-buttons">';
             $battleInfoHTML .= '<button onclick="performAction(\'attack\')">Attack</button>';
             $battleInfoHTML .= '<button onclick="performAction(\'potion\')">Use Potion</button>';
             $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Use paralysis bomb</button>';
