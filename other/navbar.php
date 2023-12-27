@@ -10,16 +10,13 @@
 
 <?php
 
-if($_SESSION['logged_in']&&$_SESSION['role_id'] == 2)
-{
+if ($_SESSION['logged_in'] && $_SESSION['role_id'] == 2) {
     echo '<!-- Navigation bar -->
     <div class="navbar">
         <div class="flex-container">
             <div>
                 <a href="/Cryland/game">Home</a>
-                <a href="/Cryland/game/character">Character</a>
-                <a href="ranking/index.html">Ranking</a>
-                <a href="about/index.html">About</a>
+                <a href="/Cryland/ranking/">Ranking</a>
             </div>
             <div>
                 <a href="/cryland/admin">Admin settings</a>
@@ -29,18 +26,13 @@ if($_SESSION['logged_in']&&$_SESSION['role_id'] == 2)
         </div>
     </div>
         ';
-}
-
-elseif ($_SESSION['logged_in'])
-{
+} elseif ($_SESSION['logged_in']) {
     echo '<!-- Navigation bar -->
     <div class="navbar">
         <div class="flex-container">
             <div>
                 <a href="/Cryland/game">Home</a>
-                <a href="/Cryland/game/character">Character</a>
-                <a href="ranking/index.html">Ranking</a>
-                <a href="about/index.html">About</a>
+                <a href="/Cryland/ranking/">Ranking</a>
             </div>
             <div>
                 <a href="/cryland/account">Account</a>
@@ -49,13 +41,13 @@ elseif ($_SESSION['logged_in'])
         </div>
     </div>
         ';
-}
-else{
+} else {
     echo '<!-- Navigation bar -->
     <div class="navbar">
         <div class="flex-container">
             <div>
-            
+                <a href="/Cryland/">Home</a>
+                <a href="/Cryland/ranking/">Ranking</a>
             </div>
             <div>
                 <a href="/Cryland/register/index.php">Register</a>

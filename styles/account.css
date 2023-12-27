@@ -1,0 +1,11 @@
+.detail {
+    border: 2px inset;
+    margin: 10px auto;
+    background-color: #ffffffd0;
+}
+
+.detail p {
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

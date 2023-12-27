@@ -1,92 +1,30 @@
-/* Updated styles */
+/* Main style theme*/
 
-.battle-info {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 50px; /* Max distance between player and enemy */
-    margin-top: 20px;
-    margin-bottom: 20px; /* Spacing between battle info and buttons */
+body {
+    background-color: #1F1B2E;
+    color: #ffffff;
 }
 
-.player-info, .enemy-info {
-    width: 20%; /* Adjust width as needed */
-    border: 5px solid #ccc;
-    padding: 10px;
-}
-
-.player-info{
-    border-color: green;
-    background: yellowgreen;
-}
-
-.enemy-info{
-    border-color: #6e0000;
-    background: #e80202;
-}
-
-.character-info {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 1px; /* Max distance between player and enemy */
-    margin-top: 20px;
-    margin-bottom: 20px; /* Spacing between battle info and buttons */
-}
-h1 {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-bottom: 10px;
-}
-.character-info p {
-    text-align: right;
-    padding: 5px 10px;
-    margin: 10px;
-}
-
-.character-info button {
-    padding: 5px 10px;
-    margin: 5px;
-}
-.buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.buttons button {
-    margin: 5px;
-    padding: 10px 20px;
-}
-
-.unclickable-button{
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin : 10px;/* Adjust the height as needed */
-}
-
-.scrollable-container {
-    width: 300px; /* Define your container width */
-    height: 200px; /* Define your container height */
-    overflow: auto; /* Enable scrolling for overflow content */
-    border: 1px solid #ccc; /* Optional border styling */
-}
-
-.content {
-    margin: 5px;
-    justify-content: center;
-    align-items: center;
-    /* Optional styling for the content inside the scrollable container */
-}
-
-.paralized{
-    background-color: gold;
+.main-window {
+    width: 300px;
+    margin: 5% auto;
+    padding: 20px;
+    border: 3px solid #040418;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     color: black;
+    text-align: center;
+}
+
+.main-window button {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    padding: 0 0 0px 0;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: black;
+    min-width: 300px;
+    color: white;
 }

@@ -40,34 +40,29 @@ try {
 <head>
     <meta charset="UTF-8">
     <title> Overworld </title>
+    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/world.css">
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <?php require_once("../../styles/navbar.php"); ?>
+    <?php include_once("../../other/navbar.php"); ?>
 
     <!-- Exploration -->
-    <div>
-        <h1> Dark Forest </h1>
-        <?php echo "You've encountered new enemy! It is: {$new_enemy['name']} </br>";?>
-        <!-- gdzieś tu zaczyna sie walka -->
-        <?php $_SESSION['paralysis_counter'] = 0;
-            $_SESSION['battle_log'] = '<p>Begin of battle with'.$new_enemy['name'].'</p>'; ?>
-            <a href="../battle/index.php">"You're no match for me!" <b>(Fight)</b>  </br> </a>
-            <a href="../">"Take me home please!" <b>(Flee)</b> </a>
+    <div class="main-window">
+        <h2> Dark Forest </h1>
+            <p>"You've encountered an enemy! It is:</p>
+            <p><b><?php echo  $new_enemy['name']; ?></b></p>
+            <!-- gdzieś tu zaczyna sie walka -->
+            <div class="options">
+                <?php 
+                $_SESSION['paralysis_counter'] = 0;
+                $_SESSION['battle_log'] = '<p>Begin of battle with: ' . $new_enemy['name'] . '</p>'; ?>
+                <button onclick="window.location.href='../battle/index.php'">Fight</button>
+                <button onclick="window.location.href='../index.php'">Run</button>
+            </div>
     </div>
 
 </body>
-
-<!--  
-    Dodaj przeciwnika do sesji
-    $enemy_id = 1;
-    $stmt = $pdo->prepare("SELECT * FROM enemies WHERE id = :id");
-    $stmt->bindParam(':id', $enemy_id);
-    $stmt->execute();
-    $enemy = $stmt->fetch(PDO::FETCH_ASSOC);
-
-   
--->
 
 </html>

@@ -13,10 +13,9 @@ try {
         throw new Exception();
     }
     $character = $stmt->fetch();
-    
+
     // Save characeter to session
     $_SESSION["character"] = $character;
-
 } catch (Exception) {
     echo "Błąd bazy danych.";
 }
@@ -29,22 +28,31 @@ try {
 <head>
     <meta charset="UTF-8">
     <title> Account manager </title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/account.css">
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <?php require_once("../styles/navbar.php")?>
+    <?php require_once("../other/navbar.php") ?>
 
-    <div>
-        <h3>Character's details:</h3>
-        <label> Name: </label>
-        <?php echo $character["name"]; ?> </br>
-        <label> Level: </label> 
-        <?php echo $character["level"]; ?> </br>
-        <label> Experience: </label>
-        <?php echo $character["exp"]; ?> </br>
-        </br>
-        <button onclick="window.location.href='../game/index.php'">Graj</button>
+    <div class="main-window">
+        <h2>Character Details</h2>
+        <div class=details-container>
+            <article class="detail">
+                <label> Name: </label>
+                <p><?php echo $character["name"]; ?></p>
+            </article>
+            <article class="detail">
+                <label> Level: </label>
+                <p><?php echo $character["level"]; ?></p>
+            </article>
+            <article class="detail">
+                <label> Experience: </label>
+                <p><?php echo $character["exp"]; ?></p>
+            </article>
+        </div>
+        <button onclick="window.location.href='../game/index.php'">Play</button>
     </div>
 
 </body>

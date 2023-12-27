@@ -1,8 +1,10 @@
 <!-- Authorization -->
 <?php
 require_once("../../other/authorization.php");
-if($_SESSION['enemy']['health']<=0 || ($_SESSION['character']['health']<=0)) {unset($_SESSION['enemy']);}
-if(!isset($_SESSION['enemy'])) header("Location: ../");
+if ($_SESSION['enemy']['health'] <= 0 || ($_SESSION['character']['health'] <= 0)) {
+    unset($_SESSION['enemy']);
+}
+if (!isset($_SESSION['enemy'])) header("Location: ../");
 ?>
 
 <!-- HTML -->
@@ -13,6 +15,7 @@ if(!isset($_SESSION['enemy'])) header("Location: ../");
     <meta charset="UTF-8">
     <title> Battle </title>
     <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../../styles/battle.css">
     <style>
         /* <!-- For testing more styles in future --> */
     </style>
@@ -68,16 +71,17 @@ if(!isset($_SESSION['enemy'])) header("Location: ../");
             // Refresh battle information every few seconds (example: every 5 seconds)
             setInterval(loadBattleInfo, 15000); // Adjust the time interval as needed
         };
-
     </script>
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <?php include_once("../../styles/navbar.php");?>
+    <?php include_once("../../other/navbar.php"); ?>
     <!-- Battle -->
-    <div id="battleInfo">
-        <!-- Battle information will be displayed here -->
+    <div class=battle-window>
+        <div id="battleInfo">
+            <!-- Battle information will be displayed here -->
+        </div>
     </div>
 </body>
 
