@@ -35,11 +35,8 @@
         </form>
         <?php if (isset($_SESSION["error"])) {
             echo '<div class="error-box">' . $_SESSION["error"] . '</div>';
-            unset($_SESSION["error"]); // Clear the error message after displaying it
-        }
-        else{
-            echo '<div></div>';
-        }?>
+            unset($_SESSION["error"]); // Clear the error message after refreshing page
+        } else { echo '<div></div>'; }?>
     </div>
     </div>
 </body>

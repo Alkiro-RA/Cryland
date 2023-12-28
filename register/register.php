@@ -20,6 +20,12 @@ try {
         }
     }
 
+    // Validate email 
+    if (!verify_email($email)) {
+        $error_code = 1;
+        throw new Exception();
+    }
+
     // Check if passwords match
     if ($pass1 != $pass2) {
         $error_code = "2";
@@ -43,8 +49,8 @@ try {
 
     // Prep new character
     $sql = "INSERT INTO Characters
-    (name, level, exp, weaponsid, armorsid, attack, health, maxhealth, defense, potion, consumable) VALUES
-    (:char_name, 1, 0, NULL, NULL, 5, 5, 5, 2, 1, 1)";
+    (name, level, exp, coins, weaponsid, attack, health, maxhealth, defense, potion, consumable) VALUES
+    (:char_name, 1, 0, 10, NULL, 5, 5, 5, 2, 1, 1)";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":char_name", $name);
 
@@ -105,7 +111,7 @@ function get_error_msg($error_code)
     $message = '';
     switch ($error_code) {
         case 1:
-            $message = "Unable to add user";
+            $message = "Wrong e-mail";
             break;
         case 2:
             $message = "Passwords didn't match";

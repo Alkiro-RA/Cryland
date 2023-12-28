@@ -1,0 +1,35 @@
+.coin p {
+    display: inline-block;
+    width: auto;
+    text-align: right;
+}
+.signboard {
+    text-align: left;
+    font-weight: bold;
+}
+.weapons {
+    margin-bottom: 15px;
+}
+.purchase #button {
+    display: inline-block;
+    width: 50%;
+    margin: 0.5em auto;
+    padding: 0 0 0px 0;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #3b3b4f;
+    border-color: black;
+    min-width: 50px;
+    color: white;
+}
+.purchase #item {
+    font-size: 1.1rem;
+    max-width: 40%;
+    padding: 0.3em 5px;
+    border: 2px inset;
+}
+
+.purchase button {
+    margin: 0.5em auto;
+}
+

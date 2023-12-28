@@ -17,7 +17,7 @@
         <h2> Top Players </h2>
         <table>
             <tr>
-                <th id=name>Name</th>
+                <th>Name</th>
                 <th>Level</th>
                 <th>Bosses Defeated</th>
             </tr>

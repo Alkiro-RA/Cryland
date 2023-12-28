@@ -1,10 +1,20 @@
-/* Main style theme*/
-
+/* PAGE STANDARD */
 body {
     background-color: #1F1B2E;
+    font-family: Arial, sans-serif;
     color: #ffffff;
 }
-
+.main-window {
+    width: 300px;
+    margin: 5% auto;
+    padding: 20px;
+    border: 3px solid #040418;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: black;
+    text-align: center;
+}
+/* BUTTON STANDARD */
 button {
     display: block;
     width: 60%;
@@ -17,24 +27,36 @@ button {
     min-width: 300px;
     color: white;
 }
-
 button:hover {
     cursor: pointer;
     background-color: #606080;
 }
 
-.main-window {
-    width: 300px;
-    margin: 5% auto;
-    padding: 20px;
-    border: 3px solid #040418;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: black;
-    text-align: center;
-}
-
 .unclickable-button{
     pointer-events: none;
     opacity: 0.5;
+}
+/* TABLE STANDARD */
+.main-window tr, th, td {
+    border: 1px solid #1b1b32;
+    color: #1b1b32;
+    padding: 0px 3px;
+    font-size: 15px;
+}
+.main-window th {
+    font-family: cursive;
+    font-weight: normal;
+}
+/* ERROR STANDARD */
+.error-box{
+    text-align: center;
+    cursor: default;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #c21c1c;
+    color: antiquewhite;
 }

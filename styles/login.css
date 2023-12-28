@@ -27,16 +27,3 @@
 .login-container input[type="submit"]:hover {
     background-color: #0056b3;
 }
-
-.error-box{
-    text-align: center;
-    cursor: default;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    background-color: #c21c1c;
-    color: antiquewhite;
-}

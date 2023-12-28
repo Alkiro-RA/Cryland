@@ -18,8 +18,8 @@ try {
     // Put data into HTML's table
     foreach ($characters as $char) {
         echo 
-        "<tr id='row'>
-            <td id='name'>{$char['name']}</td>
+        "<tr>
+            <td>{$char['name']}</td>
             <td>{$char['level']}</td>
             <td></td>
         </tr>";
