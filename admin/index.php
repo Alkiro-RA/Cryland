@@ -38,23 +38,27 @@ require_once ("admin_verification.php");
 
         /* Center content */
         .content {
+            color: whitesmoke;
             margin-left: 200px;
             padding: 20px;
         }
 
         /* Table styles */
         table {
+            color: whitesmoke;
             width: 100%;
             border-collapse: collapse;
         }
 
         table, th, td {
+            color: whitesmoke;
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
 
         th {
+            color:whitesmoke;
             background-color: #3b3b4f;
         }
 
@@ -68,7 +72,7 @@ require_once ("admin_verification.php");
             padding: 10px 20px;
             background-color: #3b3b4f;
             border-color: black;
-            color: white;
+            color: whitesmoke;
         }
 
         button:hover,
@@ -150,15 +154,19 @@ require_once ("admin_verification.php");
         }
 
         .error-box {
-            background-color: #ff6347;
+            border-color:black;
+            background-color: #b40000;
             margin-top: 5px;
-            padding: 10px 20px
+            padding: 10px 20px;
+            border-radius: 3px;
         }
 
         .success-box{
+            text-align: center;
             background-color: #039f0c;
             margin-top: 5px;
-            padding: 10px 20px
+            padding: 10px 20px;
+            border-radius: 3px;
         }
     </style>
     <!-- JavaScript to handle displaying different tables -->
