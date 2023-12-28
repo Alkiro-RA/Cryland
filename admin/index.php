@@ -13,7 +13,7 @@ require_once ("admin_verification.php");
             margin: 0;
             padding: 0;
             width: 200px;
-            background-color: #f1f1f1;
+            background-color: #3b3b4f;
             position: fixed;
             height: 100%;
             overflow: auto;
@@ -21,18 +21,18 @@ require_once ("admin_verification.php");
 
         .sidebar a {
             display: block;
-            color: black;
+            color: whitesmoke;
             padding: 16px;
             text-decoration: none;
         }
 
         .sidebar a.active {
-            background-color: #343434;
+            background-color: #29293b;
             color: white;
         }
 
         .sidebar a:hover:not(.active) {
-            background-color: #555;
+            background-color: #464662;
             color: white;
         }
 
@@ -92,7 +92,9 @@ require_once ("admin_verification.php");
 
         /* Input fields */
         input[type="text"],
-        input[type="number"] {
+        input[type="number"],
+        input[type="email"],
+        input[type="password"]{
             width: 100%;
             padding: 8px;
             margin: 6px 0;
@@ -104,10 +106,47 @@ require_once ("admin_verification.php");
         }
 
         input[type="text"]:focus,
-        input[type="number"]:focus {
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus{
             outline: none;
             border-color: #66afe9;
             /* Example: Change border color on focus */
+        }
+
+        /* Style for select dropdown and its options */
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #333;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #66afe9;
+            /* Change border color on focus */
+        }
+
+        select option {
+            /* Add your styles here */
+            background-color: #f1f1f1;
+            color: #333;
+            padding: 6px 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-top-left-radius: 1px;
+            border-top-right-radius: 1px;
+        }
+
+        select option:hover {
+            /* Add hover effect */
+            background-color: #e0e0e0;
+            cursor: pointer;
         }
 
         .error-box {
@@ -183,7 +222,6 @@ require_once ("admin_verification.php");
             <a href="#users" onclick="showTable('users'); toggleActiveClass(this)">Users</a>
             <a href="#characters" onclick="showTable('characters'); toggleActiveClass(this)">Characters</a>
             <a href="#weapons" onclick="showTable('weapons'); toggleActiveClass(this)">Weapons</a>
-            <a href="#armors" onclick="showTable('armors'); toggleActiveClass(this)">Armors</a>
         </div>
 
 
