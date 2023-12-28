@@ -48,6 +48,10 @@ try {
                 <p><?php echo $character["level"]; ?></p>
             </article>
             <article class="detail">
+                <label> Coins: </label>
+                <p><?php echo $character["coins"]; ?></p>
+            </article>
+            <article class="detail">
                 <label> Experience: </label>
                 <p><?php echo $character["exp"]; ?></p>
             </article>

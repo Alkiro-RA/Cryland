@@ -96,15 +96,19 @@ try {
 
                 // Check if the enemy survived the attack
                 if ($enemy['health'] <= 0) {
+                    $coin_reward = rand(1, $enemy['lvl']);
                     $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' won against '. $enemy['name'] .'</p>';
-                    $_SESSION['battle_log'] .= '<p>'.$player['name'].' got '.$enemy['lvl'].' points</p>';
-                    $player['exp'] = $player['exp'] + $enemy['lvl'];
+                    $_SESSION['battle_log'] .= '<p>'.$player['name'].' got '.$enemy['lvl'].' XP points and '. $coin_reward. ' coins</p>';
+                    // XP and Coin rewards 
+                    $player['exp'] += $enemy['lvl'];
+                    $player['coins'] += $coin_reward;
                     // Update player's data in the database
-                    $stmt = $pdo->prepare("UPDATE characters SET health = :health, potion = :potion, consumable = :consumable, exp = :exp WHERE id = :id");
+                    $stmt = $pdo->prepare("UPDATE characters SET health = :health, potion = :potion, consumable = :consumable, exp = :exp, coins = :coins WHERE id = :id");
                     $stmt->bindParam(':health', $player['health']);
                     $stmt->bindParam(':potion', $player['potion']);
                     $stmt->bindParam(':consumable', $player['consumable']);
                     $stmt->bindParam(':exp',$player['exp']);
+                    $stmt->bindParam(':coins', $player['coins']);
                     $stmt->bindParam(':id', $player['id']);
                     $stmt->execute();
                     // Enemy defeated, handle victory

@@ -24,20 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `armors`
---
-
-CREATE TABLE `armors` (
-  `id` int(255) NOT NULL,
-  `name` varchar(60) NOT NULL,
-  `attack_bonus` int(255) NOT NULL,
-  `health_bonus` int(255) NOT NULL,
-  `defense_bonus` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `bosses`
 --
 
@@ -56,7 +42,7 @@ CREATE TABLE `bosses` (
 --
 
 INSERT INTO `bosses` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`, `consumable`) VALUES
-(1, 'Skeleton King', 15, 50, 50, 5, 2);
+(1, 'Skeleton King', 15, 100, 100, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -71,7 +57,6 @@ CREATE TABLE `characters` (
   `exp` int(255) NOT NULL,
   `coins` int(255) NOT NULL,
   `weaponsid` int(11) DEFAULT NULL,
-  `armorsid` int(11) DEFAULT NULL,
   `attack` int(255) NOT NULL,
   `health` int(255) NOT NULL,
   `maxhealth` int(255) NOT NULL,
@@ -84,8 +69,10 @@ CREATE TABLE `characters` (
 -- Zrzut danych tabeli `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `armorsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
-(1, 'Kyuba', 3, 26, 0, NULL, NULL, 7, 1, 5, 5, 0, 0);
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
+(1, 'Kyuba', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0);
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
+(2, 'Rash', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +140,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
-(8, 2, 1, 'Kyuba', 'test@o2.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m');
+(1, 2, 1, 'Kyuba', 'test@o2.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m');
+INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
+(2, 2, 2, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS');
 
 -- --------------------------------------------------------
 
@@ -164,20 +153,17 @@ INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `passw
 CREATE TABLE `weapons` (
   `id` int(255) NOT NULL,
   `name` varchar(60) NOT NULL,
+  `price` int(255) NOT NULL,
   `attack_bonus` int(255) NOT NULL,
   `health_bonus` int(255) NOT NULL,
   `defense_bonus` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+INSERT INTO `weapons` (`id`, `name`, `price`, `attack_bonus`, `health_bonus`, `defense_bonus`) VALUES ('1', 'Knife', '10', '3', '0', '1');
+
 --
 -- Indeksy dla zrzutów tabel
 --
-
---
--- Indeksy dla tabeli `armors`
---
-ALTER TABLE `armors`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `bosses`
@@ -190,7 +176,6 @@ ALTER TABLE `bosses`
 --
 ALTER TABLE `characters`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `armorsid` (`armorsid`),
   ADD KEY `weaponsid` (`weaponsid`);
 
 --
@@ -222,12 +207,6 @@ ALTER TABLE `weapons`
 --
 -- AUTO_INCREMENT dla zrzuconych tabel
 --
-
---
--- AUTO_INCREMENT dla tabeli `armors`
---
-ALTER TABLE `armors`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT dla tabeli `bosses`
@@ -273,7 +252,6 @@ ALTER TABLE `weapons`
 -- Ograniczenia dla tabeli `characters`
 --
 ALTER TABLE `characters`
-  ADD CONSTRAINT `characters_ibfk_1` FOREIGN KEY (`armorsid`) REFERENCES `armors` (`id`),
   ADD CONSTRAINT `characters_ibfk_2` FOREIGN KEY (`weaponsid`) REFERENCES `weapons` (`id`);
 
 --
