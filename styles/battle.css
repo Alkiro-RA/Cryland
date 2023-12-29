@@ -1,5 +1,6 @@
 .main-window {
     width: 500px;
+    position: relative;
 }
 
 .battle-info {
@@ -9,6 +10,22 @@
     gap: 50px; /* Max distance between player and enemy */
     margin-top: 20px;
     margin-bottom: 20px; /* Spacing between battle info and buttons */
+}
+
+.overlay-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Overlay width */
+    height: 100%; /* Overlay height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 9999; /* Set a higher z-index to ensure it appears above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    /* Additional styles for your overlay content */
 }
 
 .player-info, .enemy-info {
@@ -52,4 +69,48 @@
 .paralized{
     background-color: gold;
     color: black;
+}
+.charging{
+    background: #b40000;
+    color: whitesmoke;
+}
+
+.victory-box {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 40%;
+    width: 80%; /* Overlay width */
+    height: 20%; /* Overlay height */
+    background-color: rgba(158, 255, 0, 0.75); /* Semi-transparent black background */
+    border: 3px solid rgba(0, 128, 0, 0.75);
+    border-radius: 5px;
+    z-index: 9999; /* Set a higher z-index to ensure it appears above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(63, 31, 96, 0.75);
+    font-size: 24px;
+    /* Additional styles for your overlay content */
+}
+
+.deafeted-box {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 40%;
+    width: 80%; /* Overlay width */
+    height: 20%; /* Overlay height */
+    background-color: rgba(255, 0, 0, 0.75); /* Semi-transparent black background */
+    border: 3px solid rgba(128, 0, 0, 0.75);
+    border-radius: 5px;
+    z-index: 9999; /* Set a higher z-index to ensure it appears above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(216, 228, 255, 0.75);
+    font-size: 24px;
+    /* Additional styles for your overlay content */
 }

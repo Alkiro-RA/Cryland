@@ -76,12 +76,13 @@ try {
                             if($player['consumable']>0)
                             {
                                 // Aplying paralysis on enemy
-                                $_SESSION['paralysis_counter'] = 2;
+                                $_SESSION['paralysis_counter'] = 3;
                                 $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' paralized '.$enemy['name'].'</p>';
                                 // Handle consumable action
                                 // Perform consumable-related logic here
                                 $player_action_done = true;
                                 $player['consumable'] = $player['consumable'] - 1;
+                                InteruptBoss();
                             }
 
                             break;
@@ -101,6 +102,7 @@ try {
                                 $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' attacked '. $enemy['name'] .' for '.$dmg.'</p>';
                                 $player_action_done = true;
                                 $player['consumable'] = $player['consumable'] - 1;
+                                InteruptBoss();
                             }
 
 
@@ -138,29 +140,66 @@ try {
                     // Break the loop or perform necessary actions
 
                 } else if ($player_action_done) {
-                    // Step 2: Enemy's Turn
-                    // Enemy attacks the player
-                    // Update player's health based on enemy's attack power
-                    if ($_SESSION['paralysis_counter'] > 0)
-                    {
-                        $_SESSION['paralysis_counter'] = $_SESSION['paralysis_counter'] - 1;
-                        $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' did nothing </p>';
-                    }
-                    else{
-                        if($current_weapon!=NUll){
-                            $dmg = $enemy['attack'] - $player['defense'] - $current_weapon['defense_bonus'];
-                        }else{
-                            $dmg = $enemy['attack'] - $player['defense'];
+                    //Boss fight case
+                    if(isset($_SESSION['boss_fight'])){
+                        if ($_SESSION['paralysis_counter'] > 0)
+                        {
+                            $_SESSION['paralysis_counter'] = $_SESSION['paralysis_counter'] - 1;
+                            $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' did nothing </p>';
                         }
-                        if($dmg < 1) $dmg = 1;
-                        $player['health'] = $player['health']- $dmg;
-                        $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' attacked '. $player['name'] .' for '.$dmg.'</p>';
-                    }
-                    // Check if the player survived the attack
-                    if ($player['health'] <= 0) {
-                        $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' lost against '. $enemy['name'] .'</p>';
-                        // Player defeated, handle defeat
-                        // Break the loop or perform necessary actions
+                        elseif ($enemy['health']<40 && $enemy['consumable']>0){
+                            $enemy['health'] += 30;
+                            $enemy['consumable']--;
+                            $_SESSION['battle_log'] .='<p>'.$enemy['name'].' healed 30 hp</p>';
+                        }
+                        else{
+                            $dmg = $enemy['attack'];
+                            $_SESSION['boss_charge_attack']--;
+                            if($_SESSION['boss_charge_attack'] == 3) $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' is preaparing strong attack</p>';
+                            if($_SESSION['boss_charge_attack'] == 0){
+                                $dmg = $dmg*5;
+                                $_SESSION['boss_charge_attack'] = 6;
+                            }
+                            if($current_weapon!=NUll){
+                                $dmg = $dmg - $player['defense'] - $current_weapon['defense_bonus'];
+                            }else{
+                                $dmg = $dmg - $player['defense'];
+                            }
+                            if($dmg < 1) $dmg = 1;
+                            $player['health'] = $player['health']- $dmg;
+                            $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' attacked '. $player['name'] .' for '.$dmg.'</p>';
+                        }
+                        // Check if the player survived the attack
+                        if ($player['health'] <= 0) {
+                            $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' lost against '. $enemy['name'] .'</p>';
+                            // Player defeated, handle defeat
+                            // Break the loop or perform necessary actions
+                        }
+                    }else{
+                        // Step 2: Enemy's Turn
+                        // Enemy attacks the player
+                        // Update player's health based on enemy's attack power
+                        if ($_SESSION['paralysis_counter'] > 0)
+                        {
+                            $_SESSION['paralysis_counter'] = $_SESSION['paralysis_counter'] - 1;
+                            $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' did nothing </p>';
+                        }
+                        else{
+                            if($current_weapon!=NUll){
+                                $dmg = $enemy['attack'] - $player['defense'] - $current_weapon['defense_bonus'];
+                            }else{
+                                $dmg = $enemy['attack'] - $player['defense'];
+                            }
+                            if($dmg < 1) $dmg = 1;
+                            $player['health'] = $player['health']- $dmg;
+                            $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' attacked '. $player['name'] .' for '.$dmg.'</p>';
+                        }
+                        // Check if the player survived the attack
+                        if ($player['health'] <= 0) {
+                            $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' lost against '. $enemy['name'] .'</p>';
+                            // Player defeated, handle defeat
+                            // Break the loop or perform necessary actions
+                        }
                     }
                 }
             }
@@ -183,11 +222,20 @@ try {
         $battleInfoHTML .= '</div>';
         $battleInfoHTML .= '<div class="enemy-info">';
         $battleInfoHTML .= '<h2>' . $enemy['name'] . '</h2>';
+        if(isset($_SESSION['boss_charge_attack']))
+            if($_SESSION['boss_charge_attack']<4)
+                $battleInfoHTML .= '<p><span class="charging">CHARGING</span></p>';
         if ($_SESSION['paralysis_counter']>0)
-            $battleInfoHTML .= '<p><span class="paralized">PARALIZED</span> </p>';
+            $battleInfoHTML .= '<p><span class="paralized">PARALIZED</span></p>';
         $battleInfoHTML .= '<p>HP: ' . $enemy['health'] . ' / ' . $enemy['maxhealth'] . '</p>';
         // Add more enemy information as needed
         $battleInfoHTML .= '</div>';
+        if ($player['health'] <= 0 || $enemy['health'] <= 0){
+            if($player['health']>0)
+            $battleInfoHTML .= '<div class="victory-box">You deafeted '.$enemy['name'].'</div>';
+            else $battleInfoHTML .= '<div class="deafeted-box">You lost against '.$enemy['name'].'</div>';
+
+        }
         $battleInfoHTML .= '</div>';
 
         if ($player['health'] <= 0 || $enemy['health'] <= 0)
@@ -195,7 +243,12 @@ try {
             // Inserting the buttons into the battle info HTML
             $battleInfoHTML .= '<div class="battle-buttons">';
             $battleInfoHTML .= '<button onclick="redirectToHome()">Go home</button>';
-            $battleInfoHTML .= '<button onclick="redirectToExplore()">Keep exploring</button>';
+            if($player['health']>0){
+                $battleInfoHTML .= '<button onclick="redirectToExplore()">Keep exploring</button>';
+            }else{
+                $battleInfoHTML .= '<button class="unclickable-button" onclick="redirectToExplore()">Keep exploring</button>';
+            }
+
             $battleInfoHTML .= '</div>'; // Closing buttons div
         }
         else{
@@ -226,6 +279,7 @@ try {
 
 
 
+
 // Echo or return the HTML content
         echo $battleInfoHTML; // This will output the HTML content directly
     } else {
@@ -235,6 +289,12 @@ try {
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-
+function InteruptBoss(){
+    if(isset($_SESSION['boss_fight'])){
+        if($_SESSION['boss_charge_attack']<4){
+            $_SESSION['boss_charge_attack']=6;
+        }
+    }
+}
 
 ?>

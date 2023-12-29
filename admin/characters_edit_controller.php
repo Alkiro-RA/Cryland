@@ -12,10 +12,10 @@ if (isset($_GET['recordId'])) {
         $level = cleanInput($_POST["level"]);
         $exp = cleanInput($_POST["exp"]);
         $coins = cleanInput($_POST["coins"]);
-        if(empty($_POST["weaponid"])){
-            $weaponsid = NULL;
-        }else{
+        if(!empty($_POST["weaponid"])){
             $weaponsid = cleanInput($_POST["weaponsid"]);
+        }else{
+            $weaponsid = NULL;
         }
         $attack = cleanInput($_POST["attack"]);
         $health = cleanInput($_POST["health"]);
@@ -80,10 +80,12 @@ if (isset($_GET['recordId'])) {
 
 // Display the list of weapons as options in the dropdown
             foreach ($weapons as $weapon) {
-                echo '<option value="' . $weapon['id'] . '">' . $weapon['name'] . '</option>';
+                $selected = ($weapon['id'] == $character['weaponsid']) ? 'selected' : '';
+                echo '<option value="' . $weapon['id'] . '" ' . $selected . '>' . $weapon['name'] . '</option>';
             }
 
             echo '</select><br><br>';
+
 
             echo '<label for="attack">Attack:</label>';
             echo '<input type="number" id="attack" name="attack" value="' . $character['attack'] . '" min="0"><br><br>';
