@@ -84,7 +84,7 @@ if (!isset($_SESSION['enemy'])) header("Location: ../");
         // Load battle information when the page loads
         window.onload = function() {
             loadBattleInfo();
-            // Refresh battle information every few seconds (example: every 5 seconds)
+            // Refresh battle information every few seconds (now: every 15 seconds)
             setInterval(loadBattleInfo, 15000); // Adjust the time interval as needed
         };
     </script>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['enemy'])) header("Location: ../");
     <?php include_once("../../other/navbar.php"); ?>
     <!-- Battle -->
     <div class=main-window id="battleInfo">
-            <!-- Battle information will be displayed here -->
+    <!-- Battle information will be displayed here -->
     </div>
 </body>
 
