@@ -37,7 +37,7 @@ try {
 
     echo $tableHTML;
 } catch(PDOException $e) {
-    // Handle any errors with the database connection or query execution
-    echo "Error: " . $e->getMessage();
+    $_SESSION['error'] = $e->getMessage();
+    header("Location: index.php");
 }
 ?>

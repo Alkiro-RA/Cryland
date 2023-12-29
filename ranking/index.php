@@ -11,7 +11,7 @@
 
 <body>
     <?php 
-    $_SESSION['logged_in'] = false; 
+    session_start();
     include_once("../other/navbar.php"); ?>
     <div class="main-window">
         <h2> Top Players </h2>

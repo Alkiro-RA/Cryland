@@ -12,7 +12,11 @@ if (isset($_GET['recordId'])) {
         $level = cleanInput($_POST["level"]);
         $exp = cleanInput($_POST["exp"]);
         $coins = cleanInput($_POST["coins"]);
-        $weaponsid = cleanInput($_POST["weaponsid"]);
+        if(empty($_POST["weaponid"])){
+            $weaponsid = NULL;
+        }else{
+            $weaponsid = cleanInput($_POST["weaponsid"]);
+        }
         $attack = cleanInput($_POST["attack"]);
         $health = cleanInput($_POST["health"]);
         $maxhealth = cleanInput($_POST["maxhealth"]);
@@ -36,6 +40,7 @@ if (isset($_GET['recordId'])) {
                 // Redirect to the characters table view after updating the record
                 $_SESSION['success'] = "Character with ID: $id updated.";
                 header("Location: index.php");
+                exit();
             } catch (PDOException $e) {
                 $_SESSION['error'] = "Error: " . $e->getMessage();
                 header("Location: index.php");
@@ -54,7 +59,7 @@ if (isset($_GET['recordId'])) {
         if ($character) {
             // Form to edit character details
             echo '<h2>Edit Character</h2>';
-            echo '<form method="post" action="character_edit_controller.php?recordId=' . $recordId . '">';
+            echo '<form method="post" action="characters_edit_controller.php?recordId=' . $recordId . '">';
             echo '<input type="hidden" name="id" value="' . $character['id'] . '">';
             echo '<label for="name">Name:</label>';
             echo '<input type="text" id="name" name="name" value="' . $character['name'] . '"><br><br>';

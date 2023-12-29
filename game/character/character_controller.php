@@ -3,9 +3,6 @@ require_once ("../../data/db.php");
 require_once("../../other/authorization.php");
 $character = $_SESSION['character']; //Only for test purpose
 try{
-    /*$userID = $_SESSION['user_id']; // Replace with your actual session variable name
-
-    */
     if($character['exp']>=$character['level'])
     {
         if (isset($_GET['upgrade'])) {
@@ -117,19 +114,8 @@ $characterInfoHTML .=        '</div>
     </div>';
 $characterInfoHTML .='<div class="char-buttons">
         <button onclick="upgradeAttribute(\'save\')">Save</button>
-        <button onclick="upgradeAttribute(\'reset\')">Reset</button>';
-if($character['exp']<2){
-    $characterInfoHTML .= '<button class="unclickable-button" onclick="upgradeAttribute(\'potion\')">Potion (cost 2)</button>
-        <button class="unclickable-button" onclick="upgradeAttribute(\'consumable\')">Scroll (cost 4)</button>';
-}
-elseif($character['exp']<4){
-    $characterInfoHTML .= '<button onclick="upgradeAttribute(\'potion\')">Potion (cost 2)</button>
-        <button class="unclickable-button" onclick="upgradeAttribute(\'consumable\')">Scroll (cost 4)</button>';
-}
-else{
-    $characterInfoHTML .= '<button onclick="upgradeAttribute(\'potion\')">Potion (cost 2)</button>
-        <button onclick="upgradeAttribute(\'consumable\')">Scroll (cost 4)</button>';
-}
+        <button onclick="upgradeAttribute(\'reset\')">Reset</button>
+        <button onclick="window.location.href=\'inventory\'">Inventory</button>';
 
 $characterInfoHTML .=  '</div>';
 echo $characterInfoHTML;
