@@ -13,9 +13,10 @@ try {
     $item = $_POST['item'];
     // Make item case-insensitive
     $item = strtolower($item);
+    $is_weapon = false;
     // Is item a consumable
     switch ($item) {
-        case 'potion': {    
+        case 'potion': {
                 // 5 coins
                 is_affordable(5);
                 $_SESSION['character']['potion']++;
@@ -65,6 +66,7 @@ try {
                 }
                 is_affordable($item['price']);
                 give_coins($item['price']);
+                $is_weapon = true;
             }
     }
     // Account the payment
@@ -77,26 +79,23 @@ try {
         $error_code = 4;
         throw new Exception();
     }
-
+    // Update inventory
+    if ($is_weapon) {
+        $sql = "INSERT INTO Eq (characterid, weaponid) VALUES (:character_id, :weapon_id)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":character_id", $_SESSION['character']['id']);
+        $stmt->bindParam(":weapon_id", $item['id']);
+        // Save changes to database
+        if (!$stmt->execute()) {
+            $error_code = 4;
+            throw new Exception();
+        }
+    }
     // Redirect to shop
     header("Location: index.php");
 } catch (Exception $e) {
     $_SESSION['error'] = get_error_msg($error_code);
     header("Location: index.php");
-}
-function take_consumable($item)
-{
-    require_once("../../data/db.php");
-    $_SESSION['character'][$item]++;
-    $sql = "UPDATE Characters SET " . $item . " = :" . $item . " WHERE id = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":" . $item, $_SESSION['character'][$item]);
-    $stmt->bindParam(":id", $_SESSION['character']['id']);
-    // Save changes to database
-    if (!$stmt->execute()) {
-        $error_code = 4;
-        throw new Exception();
-    }
 }
 function give_coins($price)
 {
