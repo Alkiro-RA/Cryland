@@ -50,7 +50,7 @@ try {
 
     <!-- Exploration -->
     <div class="main-window">
-        <h2> Dark Forest </h1>
+        <h2> Dark Forest </h2>
             <p>"You've encountered an enemy! It is:</p>
             <p><b><?php echo  $new_enemy['name']; ?></b></p>
             <!-- gdzieś tu zaczyna sie walka -->

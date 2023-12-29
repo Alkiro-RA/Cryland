@@ -15,7 +15,7 @@ try{
                     break;
                 case 'health':
                     $character['maxhealth'] += 1;
-                    $character['health'] += 1;
+                    $character['health'] = $character['maxhealth'];
                     $character['exp'] = $character['exp'] - $character['level'];
                     $character['level'] = $character['level'] + 1;
                     break;

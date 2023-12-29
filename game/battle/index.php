@@ -53,6 +53,22 @@ if (!isset($_SESSION['enemy'])) header("Location: ../");
             var link = document.createElement('a');
 
             // Set the href attribute to the URL you want to navigate to
+            link.href = '../'; // Replace with your desired URL
+
+            // Set any other attributes if needed
+            link.setAttribute('target', '_self'); // Opens the link in the same window/tab
+
+            // Append the anchor element to the document body
+            document.body.appendChild(link);
+
+            // Programmatically trigger a click event on the anchor element
+            link.click();
+        }
+        function redirectToExplore() {
+            // Create an anchor element
+            var link = document.createElement('a');
+
+            // Set the href attribute to the URL you want to navigate to
             link.href = '../world/exploration.php'; // Replace with your desired URL
 
             // Set any other attributes if needed

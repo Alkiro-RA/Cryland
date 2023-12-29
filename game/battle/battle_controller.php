@@ -195,14 +195,25 @@ try {
             // Inserting the buttons into the battle info HTML
             $battleInfoHTML .= '<div class="battle-buttons">';
             $battleInfoHTML .= '<button onclick="redirectToHome()">Go home</button>';
+            $battleInfoHTML .= '<button onclick="redirectToExplore()">Keep exploring</button>';
             $battleInfoHTML .= '</div>'; // Closing buttons div
         }
         else{
             // Inserting the buttons into the battle info HTML
             $battleInfoHTML .= '<button onclick="performAction(\'attack\')">Attack</button>';
-            $battleInfoHTML .= '<button onclick="performAction(\'potion\')">Use Potion</button>';
-            $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Paralisys curse</button>';
-            $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Fire ball</button>';
+            if($player['potion']>0){
+                $battleInfoHTML .= '<button onclick="performAction(\'potion\')">Use Potion</button>';
+            }else{
+                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'potion\')">Use Potion</button>';
+            }
+            if($player['consumable']>0){
+                $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Paralisys curse</button>';
+                $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Fire ball</button>';
+            }else{
+                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'consumable\')">Paralisys curse</button>';
+                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'consumable_2\')">Fire ball</button>';
+            }
+
         }
 
 
