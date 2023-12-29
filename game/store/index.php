@@ -24,7 +24,7 @@ $_POST
             <p><?php echo $_SESSION['character']['coins']; ?></p>
         </div>
         <!-- Weapons table -->
-        <div class="weapons">
+        <div class="items">
             <p class="signboard">Avaiable Weapons</p>
             <table>
                 <tr>
@@ -35,6 +35,15 @@ $_POST
                     <th>Price</th>
                 </tr>
                 <?php require_once("./weapons.php"); ?>
+            </table>
+            <p class="signboard">Consumables</p>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                <?php require_once("./consumables.php"); ?>
             </table>
         </div>
         <div class="purchase">

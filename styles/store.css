@@ -4,10 +4,11 @@
     text-align: right;
 }
 .signboard {
+    margin-bottom: 10px;
     text-align: left;
     font-weight: bold;
 }
-.weapons {
+.items {
     margin-bottom: 15px;
 }
 .purchase #button {
@@ -32,4 +33,3 @@
 .purchase button {
     margin: 0.5em auto;
 }
-
