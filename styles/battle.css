@@ -36,7 +36,7 @@
 
 .scrollable-container {
     margin-top: 0.5em;
-    width: 300px; /* Define your container width */
+    width: 400px; /* Define your container width */
     height: 200px; /* Define your container height */
     overflow: auto; /* Enable scrolling for overflow content */
     border: 3px solid #ccc; /* Optional border styling */

@@ -6,7 +6,15 @@ require_once("../../other/authorization.php");
 
 try {
     $player = $_SESSION['character'];
+    if($player['weaponsid'] != NULL){
+        $stmt = $pdo->prepare("SELECT w.name AS weapon_name, w.attack_bonus AS attack_bonus, w.health_bonus AS health_bonus, w.defense_bonus AS defense_bonus 
+                        FROM characters c LEFT JOIN weapons w ON w.id = c.weaponsid WHERE c.id = ?");
+        $stmt->execute([$_SESSION["char_id"]]);
 
+        $current_weapon = $stmt->fetch();
+    } else {
+        $current_weapon = NULL;
+    }
     // Check if data was fetched successfully
     if (isset($_SESSION['enemy'])) {
         $enemy = $_SESSION['enemy'];
@@ -23,7 +31,11 @@ try {
                     // Handle different actions based on the parameter
                     switch ($action) {
                         case 'attack':
-                            $dmg = $player['attack'] - $enemy['defense'];
+                            if($current_weapon != NULL){
+                                $dmg = $player['attack'] + $current_weapon['attack_bonus'] - $enemy['defense'];
+                            }else{
+                                $dmg = $player['attack'] - $enemy['defense'];
+                            }
                             if ($dmg < 1) {
                                 $dmg = 1;
                             }
@@ -37,14 +49,19 @@ try {
                         case 'potion':
                             if ($player['potion']>0)
                             {
-                                $healed_amount = $player['maxhealth'] - $player['health'];
-                                $player['health'] = $player['health'] + 10;
+                                if($current_weapon != NULL){
+                                    $player['health'] = $player['health'] + 10 + $current_weapon['health_bonus'];
+                                    $healed_amount = 10 + $current_weapon['health_bonus'];
+                                }else{
+                                    $player['health'] = $player['health'] + 10;
+                                    $healed_amount = 10;
+                                }
                                 if($player['health'] > $player['maxhealth']){
                                     $player['health'] = $player['maxhealth'];
                                     $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' healed for '.$healed_amount.' </p>';
                                 }
                                 else{
-                                    $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' healed for 10 </p>';
+                                    $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' healed for '.$healed_amount.'</p>';
                                 }
                                 $player['potion'] = $player['potion'] - 1;
 
@@ -72,8 +89,14 @@ try {
                         case 'consumable_2':
                             if($player['consumable']>0)
                             {
+                                if ($current_weapon != NULL){
+                                    $dmg = $player['attack'] + $current_weapon['health_bonus'];
+                                }
+                                else{
+                                    $dmg = $player['attack'];
+                                }
                                 // Bomb that ignore defense
-                                $dmg = $player['attack']*2;
+                                $dmg = $dmg*2 - $enemy['defense'];
                                 $enemy['health'] = $enemy['health'] - $dmg;
                                 $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' attacked '. $enemy['name'] .' for '.$dmg.'</p>';
                                 $player_action_done = true;
@@ -124,7 +147,11 @@ try {
                         $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' did nothing </p>';
                     }
                     else{
-                        $dmg = $enemy['attack'] - $player['defense'];
+                        if($current_weapon!=NUll){
+                            $dmg = $enemy['attack'] - $player['defense'] - $current_weapon['defense_bonus'];
+                        }else{
+                            $dmg = $enemy['attack'] - $player['defense'];
+                        }
                         if($dmg < 1) $dmg = 1;
                         $player['health'] = $player['health']- $dmg;
                         $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' attacked '. $player['name'] .' for '.$dmg.'</p>';
@@ -174,8 +201,8 @@ try {
             // Inserting the buttons into the battle info HTML
             $battleInfoHTML .= '<button onclick="performAction(\'attack\')">Attack</button>';
             $battleInfoHTML .= '<button onclick="performAction(\'potion\')">Use Potion</button>';
-            $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Use paralysis bomb</button>';
-            $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Use fire bomb</button>';
+            $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Paralisys curse</button>';
+            $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Fire ball</button>';
         }
 
 
