@@ -14,6 +14,17 @@ require_once("../../../other/authorization.php");
     <link rel="stylesheet" href="../../../styles/character.css">
     <!-- Your CSS styles here -->
     <style>
+        .equip-button{
+            min-width: min-content;
+            font-size: 14px;
+            min-height: 0;
+            padding: 5px;
+            margin: 2px;
+        }
+
+        .td-button{
+            border-color: transparent;
+        }
     </style>
     <!-- Your JavaScript -->
     <script>
