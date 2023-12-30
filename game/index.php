@@ -23,6 +23,8 @@ unset($_SESSION['boss_fight']);
         <h2> Home </h2>
         <p> Your character is at home in the village. Decide what to do next. </p>
         <div class="options">
+            <button onclick="window.location.href='inn_controller.php'">
+                Visit INN</button>
             <button onclick="window.location.href='world/index.php'">
             Explore the Forest</button>
             <button onclick="window.location.href='character/index.php'">
