@@ -12,11 +12,7 @@ if (isset($_GET['recordId'])) {
         $level = cleanInput($_POST["level"]);
         $exp = cleanInput($_POST["exp"]);
         $coins = cleanInput($_POST["coins"]);
-        if(!empty($_POST["weaponid"])){
-            $weaponsid = cleanInput($_POST["weaponsid"]);
-        }else{
-            $weaponsid = NULL;
-        }
+        $weaponsid = cleanInput($_POST["weaponsid"]);
         $attack = cleanInput($_POST["attack"]);
         $health = cleanInput($_POST["health"]);
         $maxhealth = cleanInput($_POST["maxhealth"]);
@@ -24,6 +20,9 @@ if (isset($_GET['recordId'])) {
         $potion = cleanInput($_POST["potion"]);
         $consumable = cleanInput($_POST["consumable"]);
 
+        if (empty($weaponsid)){
+            $weaponsid = NULL;
+        }
         // Validate input
         if (empty($id) || empty($name) || $level < 1 || $exp < 0 || $coins < 0 || $attack < 0 || $health < 0 || $maxhealth < 0 || $defense < 0 || $potion < 0 || $consumable < 0) {
             $_SESSION['error'] = "Please enter valid values. All fields are required.";
