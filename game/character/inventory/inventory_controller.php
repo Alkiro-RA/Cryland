@@ -1,6 +1,7 @@
 <?php
 require_once ("../../../data/db.php");
 require_once ("../../../other/authorization.php");
+unset($_SESSION['boss_fight']);
 if (isset($_GET['equip'])) {
     $eqid = $_GET['equip'];
 

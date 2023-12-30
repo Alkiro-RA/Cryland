@@ -3,6 +3,7 @@
 try {
     require_once("../other/authorization.php");
     require_once("../data/db.php");
+    unset($_SESSION['boss_fight']);
 
     // Get character details
     $char_id = $_SESSION["char_id"];

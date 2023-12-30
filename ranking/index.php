@@ -12,6 +12,7 @@
 <body>
     <?php 
     session_start();
+    unset($_SESSION['boss_fight']);
     include_once("../other/navbar.php"); ?>
     <div class="main-window">
         <h2> Top Players </h2>

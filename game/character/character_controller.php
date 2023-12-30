@@ -1,6 +1,7 @@
 <?php
 require_once ("../../data/db.php");
 require_once("../../other/authorization.php");
+unset($_SESSION['boss_fight']);
 $character = $_SESSION['character']; //Only for test purpose
 try{
     if($character['exp']>=$character['level'])

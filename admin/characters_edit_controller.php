@@ -19,12 +19,13 @@ if (isset($_GET['recordId'])) {
         $defense = cleanInput($_POST["defense"]);
         $potion = cleanInput($_POST["potion"]);
         $consumable = cleanInput($_POST["consumable"]);
+        $duel_won = cleanInput($_POST["duel_won"]);
 
         if (empty($weaponsid)){
             $weaponsid = NULL;
         }
         // Validate input
-        if (empty($id) || empty($name) || $level < 1 || $exp < 0 || $coins < 0 || $attack < 0 || $health < 0 || $maxhealth < 0 || $defense < 0 || $potion < 0 || $consumable < 0) {
+        if (empty($id) || empty($name) || $level < 1 || $exp < 0 || $coins < 0 || $attack < 0 || $health < 0 || $maxhealth < 0 || $defense < 0 || $potion < 0 || $consumable < 0 || $duel_won < 0) {
             $_SESSION['error'] = "Please enter valid values. All fields are required.";
             header("Location: index.php");
         } else {
@@ -32,9 +33,10 @@ if (isset($_GET['recordId'])) {
                 // Prepare the SQL statement to update character data
                 $stmt = $pdo->prepare("UPDATE characters 
                                         SET name = ?, level = ?, exp = ?, coins = ?, weaponsid = ?, 
-                                        attack = ?, health = ?, maxhealth = ?, defense = ?, potion = ?, consumable = ? 
+                                        attack = ?, health = ?, maxhealth = ?, defense = ?, potion = ?, consumable = ?,
+                                        duel_won = ?
                                         WHERE id = ?");
-                $stmt->execute([$name, $level, $exp, $coins, $weaponsid, $attack, $health, $maxhealth, $defense, $potion, $consumable, $id]);
+                $stmt->execute([$name, $level, $exp, $coins, $weaponsid, $attack, $health, $maxhealth, $defense, $potion, $consumable, $duel_won, $id]);
 
                 // Redirect to the characters table view after updating the record
                 $_SESSION['success'] = "Character with ID: $id updated.";
@@ -98,6 +100,8 @@ if (isset($_GET['recordId'])) {
             echo '<input type="number" id="potion" name="potion" value="' . $character['potion'] . '" min="0"><br><br>';
             echo '<label for="consumable">Consumable:</label>';
             echo '<input type="number" id="consumable" name="consumable" value="' . $character['consumable'] . '" min="0"><br><br>';
+            echo '<label for="duel_won">Duels won:</label>';
+            echo '<input type="number" id="duel_won" name="duel_won" value="' . $character['duel_won'] . '" min="0"><br><br>';
             echo '<input type="submit" value="Update Character">';
             echo '</form>';
         } else {

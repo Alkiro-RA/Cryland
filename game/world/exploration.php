@@ -2,6 +2,7 @@
 <?php
 require_once("../../other/authorization.php");
 require_once("../../data/db.php");
+unset($_SESSION['boss_fight']);
 try {
     // Get a list of potential enemies 
     $char_level = $_SESSION['character']['level'] + 2;

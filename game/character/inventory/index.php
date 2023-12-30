@@ -1,6 +1,7 @@
 <!-- Authorization -->
 <?php
 require_once("../../../other/authorization.php");
+unset($_SESSION['boss_fight']);
 ?>
 
 <!-- HTML -->
