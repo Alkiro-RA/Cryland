@@ -85,7 +85,7 @@ if(isset($_SESSION['character'])){
 
         $eqHTML .= '</table>';
         $eqHTML .= '<table>';
-        $eqHTML .= '<tr><th>Weapon</th><th>Attack Bonus</th><th>Healing Bonus</th><th>Defense Bonus</th></tr>';
+        $eqHTML .= '<tr><th>Weapon</th><th>Attack Bonus</th><th>Magic Bonus</th><th>Defense Bonus</th></tr>';
 
         foreach ($eq as $item) {
             $eqHTML .= '<tr>';
