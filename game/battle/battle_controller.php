@@ -121,11 +121,22 @@ try {
 
                 // Check if the enemy survived the attack
                 if ($enemy['health'] <= 0) {
-                    $coin_reward = rand(1, $enemy['lvl']);
+                    if(isset($_SESSION['boss_fight'])){
+                        if($player['duel_won'] == 0){
+                            $coin_reward = 50;
+                            $exp_reward = 200;
+                        }else{
+                            $coin_reward = 1000;
+                            $exp_reward = 10000;
+                        }
+                    }else{
+                        $coin_reward = rand(1, $enemy['lvl']);
+                        $exp_reward = $enemy['lvl'];
+                    }
                     $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' won against '. $enemy['name'] .'</p>';
-                    $_SESSION['battle_log'] .= '<p>'.$player['name'].' got '.$enemy['lvl'].' XP point(s) and '. $coin_reward. ' coin(s)</p>';
+                    $_SESSION['battle_log'] .= '<p>'.$player['name'].' got '.$exp_reward.' XP point(s) and '. $coin_reward. ' coin(s)</p>';
                     // XP and Coin rewards 
-                    $player['exp'] += $enemy['lvl'];
+                    $player['exp'] += $exp_reward;
                     $player['coins'] += $coin_reward;
                     if(isset($_SESSION['boss_fight'])){
                         $player['duel_won']++;
