@@ -18,7 +18,10 @@ try {
     switch ($item) {
         case 'potion': {
                 // 5 coins
-                is_affordable(5);
+                if (!is_affordable(5)) {
+                    $error_code = 3;
+                    throw new Exception();
+                }
                 $_SESSION['character']['potion']++;
                 $sql = "UPDATE Characters SET potion = :potion WHERE id = :id";
                 $stmt = $pdo->prepare($sql);
@@ -34,7 +37,10 @@ try {
             }
         case 'scroll': {
                 // 20 coins
-                is_affordable(20);
+                if (!is_affordable(20)) {
+                    $error_code = 3;
+                    throw new Exception();
+                }
                 $_SESSION['character']['consumable']++;
                 $sql = "UPDATE Characters SET consumable = :consumable WHERE id = :id";
                 $stmt = $pdo->prepare($sql);
@@ -64,7 +70,10 @@ try {
                     $error_code = 2;
                     throw new Exception();
                 }
-                is_affordable($item['price']);
+                if (!is_affordable($item['price'])) {
+                    $error_code = 3;
+                    throw new Exception();
+                }
                 give_coins($item['price']);
                 $is_weapon = true;
             }
@@ -104,9 +113,9 @@ function give_coins($price)
 function is_affordable($price)
 {
     if ($_SESSION['character']['coins'] < $price) {
-        $error_code = 3;
-        throw new Exception();
+        return false;
     }
+    return true;
 }
 function get_error_msg($error_code)
 {

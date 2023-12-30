@@ -3,12 +3,11 @@ require_once('../data/db.php');
 require_once('../other/authorization.php');
 unset($_SESSION['boss_fight']);
 
-if(isset($_GET['buy']))
-{
+if (isset($_GET['buy'])) {
     $buy = $_GET['buy'];
-    if($buy) {
+    if ($buy) {
         $_SESSION['character']['health'] = $_SESSION['character']['maxhealth'];
-        $_SESSION['character']['coins'] = $_SESSION['character']['coins'] - 5;
+        $_SESSION['character']['coins'] = $_SESSION['character']['coins'] - 1;
         if ($_SESSION['character']['coins'] < 0) {
             $_SESSION['character']['health'] = 1;
         }
@@ -22,7 +21,7 @@ if(isset($_GET['buy']))
 
 <head>
     <meta charset="UTF-8">
-    <title> INN </title>
+    <title> Inn </title>
     <link rel="stylesheet" href="../styles/style.css">
     <script>
         function buyMealAndBeer() {
@@ -39,26 +38,25 @@ if(isset($_GET['buy']))
 </head>
 
 <body>
-<!-- Navigation bar -->
-<?php include_once("../other/navbar.php"); ?>
-<!-- Main menu -->
-<div class="main-window">
-    <h2> INN </h2>
-    <p>Welcome to my INN</p>
-    <p>I can serve you proper meal</p>
-    <p>For only 5 coins!</p>
-    <?php echo'<p> Health:'.$_SESSION['character']['health'].'/'.$_SESSION['character']['maxhealth'].' coins: '.$_SESSION['character']['coins'].'</p>'; ?>
-    <div class="options">
-        <?php
-        if ($_SESSION['character']['coins'] < 5) {
-            echo '<button class="unclickable-button">Buy meal and beer</button>';
-        } else {
-            echo '<button onclick="buyMealAndBeer()">Buy meal and beer</button>';
-        }
-        ?>
-        <button onclick="window.location.href='index.php'">Go back</button>
+    <!-- Navigation bar -->
+    <?php include_once("../other/navbar.php"); ?>
+    <!-- Main menu -->
+    <div class="main-window">
+        <h2> Inn </h2>
+        <p>You're at the inn. Food here helps you recover your strenghts.</p>
+        <p>One coin a meal only!</p>
+        <?php echo '<p> Health:' . $_SESSION['character']['health'] . '/' . $_SESSION['character']['maxhealth'] . ' coins: ' . $_SESSION['character']['coins'] . '</p>'; ?>
+        <div class="options">
+            <?php
+            if ($_SESSION['character']['coins'] < 1) {
+                echo '<button class="unclickable-button">Buy meal and beer</button>';
+            } else {
+                echo '<button onclick="buyMealAndBeer()">Buy meal and beer</button>';
+            }
+            ?>
+            <button onclick="window.location.href='index.php'">Leave</button>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

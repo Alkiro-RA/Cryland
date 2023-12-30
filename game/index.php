@@ -23,14 +23,14 @@ unset($_SESSION['boss_fight']);
         <h2> Home </h2>
         <p> Your character is at home in the village. Decide what to do next. </p>
         <div class="options">
-            <button onclick="window.location.href='inn_controller.php'">
-                Visit INN</button>
             <button onclick="window.location.href='world/index.php'">
-            Explore the Forest</button>
+                Explore the Forest</button>
             <button onclick="window.location.href='character/index.php'">
-            Manage Character</button>
+                Manage Character</button>
+            <button onclick="window.location.href='inn_controller.php'">
+                Visit Local Inn</button>
             <button onclick="window.location.href='store/index.php'">
-            Visit General Store</button>
+                Visit General Store</button>
             <!-- Show button for boss duel conditionally -->
             <?php require_once("./game_controller.php"); ?>
         </div>
