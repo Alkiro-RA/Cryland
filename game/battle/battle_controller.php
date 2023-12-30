@@ -127,6 +127,32 @@ try {
                     // XP and Coin rewards 
                     $player['exp'] += $enemy['lvl'];
                     $player['coins'] += $coin_reward;
+                    if(isset($_SESSION['boss_fight'])){
+                        $player['duel_won']++;
+                        // Update player's data in the database
+                        $stmt = $pdo->prepare("UPDATE characters SET health = :health, potion = :potion, consumable = :consumable, exp = :exp, coins = :coins, duel_won = :duel_won WHERE id = :id");
+                        $stmt->bindParam(':health', $player['health']);
+                        $stmt->bindParam(':potion', $player['potion']);
+                        $stmt->bindParam(':consumable', $player['consumable']);
+                        $stmt->bindParam(':exp',$player['exp']);
+                        $stmt->bindParam(':coins', $player['coins']);
+                        $stmt->bindParam(":duel_won", $player['duel_won']);
+                        $stmt->bindParam(':id', $player['id']);
+                        $stmt->execute();
+                        // Enemy defeated, handle victory
+                        // Break the loop or perform necessary actions
+                    }else{
+                        // Update player's data in the database
+                        $stmt = $pdo->prepare("UPDATE characters SET health = :health, potion = :potion, consumable = :consumable, exp = :exp, coins = :coins WHERE id = :id");
+                        $stmt->bindParam(':health', $player['health']);
+                        $stmt->bindParam(':potion', $player['potion']);
+                        $stmt->bindParam(':consumable', $player['consumable']);
+                        $stmt->bindParam(':exp',$player['exp']);
+                        $stmt->bindParam(':coins', $player['coins']);
+                        $stmt->bindParam(':id', $player['id']);
+                        $stmt->execute();
+                        // Enemy defeated, handle victory
+                    }
                     // Update player's data in the database
                     $stmt = $pdo->prepare("UPDATE characters SET health = :health, potion = :potion, consumable = :consumable, exp = :exp, coins = :coins WHERE id = :id");
                     $stmt->bindParam(':health', $player['health']);
@@ -147,10 +173,14 @@ try {
                             $_SESSION['paralysis_counter'] = $_SESSION['paralysis_counter'] - 1;
                             $_SESSION['battle_log'] .= '<p>' . $enemy['name'] . ' did nothing </p>';
                         }
-                        elseif ($enemy['health']<40 && $enemy['consumable']>0){
+                        elseif ($enemy['health']<40 && $enemy['consumable']>0 && $player['duel_won']==0){
                             $enemy['health'] += 30;
                             $enemy['consumable']--;
                             $_SESSION['battle_log'] .='<p>'.$enemy['name'].' healed 30 hp</p>';
+                        }elseif ($enemy['health']<200 && $enemy['consumable']>0 && $player['duel_won']>0){
+                            $enemy['health'] += 150;
+                            $enemy['consumable']--;
+                            $_SESSION['battle_log'] .='<p>'.$enemy['name'].' healed 150 hp</p>';
                         }
                         else{
                             $dmg = $enemy['attack'];
