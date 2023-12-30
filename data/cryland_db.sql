@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2023 at 01:42 PM
+-- Generation Time: Dec 30, 2023 at 03:51 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `bosses` (
 
 INSERT INTO `bosses` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`, `consumable`) VALUES
 (1, 'Goblin King', 15, 100, 100, 5, 2),
-(2, 'Smoeczex Płaczex', 150, 500, 1000, 50, 5);
+(2, 'Smoeczex Płaczex', 50, 500, 500, 30, 3);
 
 -- --------------------------------------------------------
 
@@ -72,9 +72,10 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`, `duel_won`) VALUES
-(1, 'Kyuba', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0, 0),
-(2, 'Rash', 10, 41, 12, 1, 8, 100, 100, 19, 3, 0, 1),
-(5, 'test', 2, 0, 1, NULL, 5, 4, 5, 3, 1, 1, 0);
+(1, 'Admin', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0, 1),
+(2, 'User', 1, 0, 50, NULL, 5, 5, 5, 5, 0, 0, 0),
+(3, 'Kyuba', 5, 26, 50, NULL, 9, 5, 5, 5, 0, 0, 1),
+(4, 'Rash', 5, 26, 50, NULL, 7, 6, 6, 6, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -97,11 +98,11 @@ CREATE TABLE `enemies` (
 --
 
 INSERT INTO `enemies` (`id`, `lvl`, `name`, `attack`, `health`, `maxhealth`, `defense`) VALUES
-(1, 2, 'Goblin', 2, 6, 6, 2),
-(2, 1, 'Wolf', 2, 5, 5, 1),
-(6, 3, 'Hobgoblin', 5, 10, 10, 4),
-(7, 2, 'Skeleton', 5, 3, 3, 0),
-(11, 3, 'Armored Skeleton', 5, 5, 5, 10);
+(1, 1, 'Wolf', 2, 5, 5, 1),
+(2, 3, 'Goblin', 3, 10, 10, 2),
+(3, 7, 'Skeleton', 5, 20, 20, 0),
+(4, 10, 'Hobgoblin', 6, 35, 35, 10),
+(5, 12, 'Armored Skeleton', 6, 35, 35, 30);
 
 -- --------------------------------------------------------
 
@@ -114,14 +115,6 @@ CREATE TABLE `eq` (
   `characterid` int(255) NOT NULL,
   `weaponid` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `eq`
---
-
-INSERT INTO `eq` (`id`, `characterid`, `weaponid`) VALUES
-(2, 2, 1),
-(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -162,9 +155,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
-(1, 2, 1, 'Kyuba', 'test@o2.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m'),
-(2, 2, 2, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS'),
-(9, 1, 5, 'test', 'test@test.pl', '$2y$10$ZcdCUOb0bTx/Gnf0xLkYS.SFd.V/pQdHJh2Oj1R30ZR8pFJzPkW7W');
+(1, 2, 1, 'admin', 'admin@test.pl', '$2y$10$Lo9/WtJ4K5qgMVPuF1IQg.T9Ey4bhZgo9/.ZL7VNppemBFxpvqZGC'),
+(2, 1, 2, 'user', 'user@test.pl', '$2y$10$.uuP91cdwQeN5bnhW26WkO7CKNpgHCpCbpF/FdCGWCCAHXtE/QFUS'),
+(3, 2, 3, 'Kyuba', 'kyuba@test.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m'),
+(4, 2, 4, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS');
 
 -- --------------------------------------------------------
 
@@ -186,7 +180,11 @@ CREATE TABLE `weapons` (
 --
 
 INSERT INTO `weapons` (`id`, `name`, `price`, `attack_bonus`, `health_bonus`, `defense_bonus`) VALUES
-(1, 'Knife', 10, 3, 0, 1);
+(1, 'Knife', 10, 5, 1, 1),
+(2, 'Sword', 150, 20, 10, 10),
+(3, 'Halberd', 750, 50, 20, 20),
+(4, 'Shield', 120, 1, 30, 30),
+(5, 'Greatshield', 550, 5, 50, 200);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -253,7 +251,7 @@ ALTER TABLE `bosses`
 -- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `enemies`
@@ -277,13 +275,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `weapons`
 --
 ALTER TABLE `weapons`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
