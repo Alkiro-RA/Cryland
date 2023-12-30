@@ -65,7 +65,7 @@ if(isset($_SESSION['character'])){
 
         $eqHTML = '<h2>Inventory</h2>';
         $eqHTML .= '<table>';
-        $eqHTML .= '<tr><th>Weapon</th><th>Attack Bonus</th><th>Healing Bonus</th><th>Defense Bonus</th></tr>';
+        $eqHTML .= '<tr><th>Weapon</th><th>Attack Bonus</th><th>Magic Bonus</th><th>Defense Bonus</th></tr>';
         if(!empty($current_weapon)){
             $eqHTML .= '<tr>';
             $eqHTML .= '<td>' . $current_weapon['weapon_name'] . '</td>';
@@ -98,6 +98,7 @@ if(isset($_SESSION['character'])){
         }
 
         $eqHTML .= '</table>';
+        $eqHTML .= '<button onclick="window.location.href=\'../\'">Go back</button>';
         echo $eqHTML;
 
     }catch (PDOException $e)
