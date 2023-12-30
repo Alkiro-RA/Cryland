@@ -97,7 +97,7 @@ try {
                                     $dmg = $player['attack'];
                                 }
                                 // Bomb that ignore defense
-                                $dmg = $dmg*2 - $enemy['defense'];
+                                $dmg = $dmg*2;
                                 $enemy['health'] = $enemy['health'] - $dmg;
                                 $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' attacked '. $enemy['name'] .' for '.$dmg.'</p>';
                                 $player_action_done = true;
