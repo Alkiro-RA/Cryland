@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2023 at 12:34 PM
+-- Generation Time: Dec 30, 2023 at 01:42 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -42,7 +42,8 @@ CREATE TABLE `bosses` (
 --
 
 INSERT INTO `bosses` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`, `consumable`) VALUES
-(1, 'Goblin King', 15, 100, 100, 5, 2);
+(1, 'Goblin King', 15, 100, 100, 5, 2),
+(2, 'Smoeczex Płaczex', 150, 500, 1000, 50, 5);
 
 -- --------------------------------------------------------
 
@@ -72,8 +73,8 @@ CREATE TABLE `characters` (
 
 INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`, `duel_won`) VALUES
 (1, 'Kyuba', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0, 0),
-(2, 'Rash', 10, 41, 12, 1, 8, 100, 100, 19, 3, 0, 0),
-(5, 'test', 1, 0, 0, NULL, 5, 5, 5, 2, 1, 1, 0);
+(2, 'Rash', 10, 41, 12, 1, 8, 100, 100, 19, 3, 0, 1),
+(5, 'test', 2, 0, 1, NULL, 5, 4, 5, 3, 1, 1, 0);
 
 -- --------------------------------------------------------
 

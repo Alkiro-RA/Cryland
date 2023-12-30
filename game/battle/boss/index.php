@@ -15,10 +15,8 @@
         <!--Page-->
         <div class="main-window">
             <h2>Challange</h2>
-            <p>You are standing in front of the goblin villiage. </br>
-            If you challange the chieftain and defeat him,</br>
-            this goblin village will cease harrasing your town.
-            </p>
+            <!--Boss Lore-->
+            <p><?php require_once("./boss_lore.php");?></p>
             <p>What is it you will do?</p>
             <button onclick="window.location.href='./boss_controller.php'">Enter inside</button>
             <button onclick="window.location.href='../../index.php'">Run back</button>

@@ -29,8 +29,8 @@ unset($_SESSION['boss_fight']);
             Manage Character</button>
             <button onclick="window.location.href='store/index.php'">
             Visit General Store</button>
-            <button onclick="window.location.href='battle/boss/index.php'">
-            Challange Great Enemy</button>
+            <!-- Show button for boss duel conditionally -->
+            <?php require_once("./game_controller.php"); ?>
         </div>
     </div>
 </body>

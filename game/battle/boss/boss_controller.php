@@ -2,8 +2,10 @@
 require_once("../../../other/authorization.php");
 require_once("../../../data/db.php");
 
-$sql = "SELECT * FROM Bosses WHERE id = 1";
+$boss_id = $_SESSION['character']['duel_won'] + 1;
+$sql = "SELECT * FROM Bosses WHERE id = :boss_id";
 $stmt = $pdo->prepare($sql);
+$stmt->bindParam(":boss_id", $boss_id);
 $stmt->execute();
 $boss = $stmt->fetch();
 
