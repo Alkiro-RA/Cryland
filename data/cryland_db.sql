@@ -43,7 +43,7 @@ CREATE TABLE `bosses` (
 
 INSERT INTO `bosses` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`, `consumable`) VALUES
 (1, 'Goblin King', 15, 100, 100, 5, 2),
-(2, 'Smoeczex Płaczex', 50, 500, 500, 30, 3);
+(2, 'Smoczex Płaczex', 50, 500, 500, 30, 3);
 
 -- --------------------------------------------------------
 
@@ -72,10 +72,9 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`, `duel_won`) VALUES
-(1, 'Admin', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0, 1),
-(2, 'User', 1, 0, 50, NULL, 5, 5, 5, 5, 0, 0, 0),
-(3, 'Kyuba', 5, 26, 50, NULL, 9, 5, 5, 5, 0, 0, 1),
-(4, 'Rash', 5, 26, 50, NULL, 7, 6, 6, 6, 0, 0, 1);
+(1, 'Admin', 10, 26, 50, NULL, 7, 8, 8, 9, 0, 0, 1),
+(2, 'Kyuba', 5, 26, 50, NULL, 9, 5, 5, 5, 0, 0, 0),
+(3, 'Rash', 5, 26, 50, NULL, 7, 6, 6, 6, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -156,9 +155,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
 (1, 2, 1, 'admin', 'admin@test.pl', '$2y$10$Lo9/WtJ4K5qgMVPuF1IQg.T9Ey4bhZgo9/.ZL7VNppemBFxpvqZGC'),
-(2, 1, 2, 'user', 'user@test.pl', '$2y$10$.uuP91cdwQeN5bnhW26WkO7CKNpgHCpCbpF/FdCGWCCAHXtE/QFUS'),
-(3, 2, 3, 'Kyuba', 'kyuba@test.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m'),
-(4, 2, 4, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS');
+(2, 2, 2, 'Kyuba', 'kyuba@test.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m'),
+(3, 2, 3, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS');
 
 -- --------------------------------------------------------
 

@@ -14,9 +14,7 @@ Create new database named 'cryland_db', options as default
 Once logged in, go to the 'Import' tab
 Import file 'cryland_db.sql' from 'cryland/data' directory, options as default
 In your web browser go to 'http://localhost/cryland/' 
-
-
-
+Have fun <3
 
 # Admin credentials:
 login:
