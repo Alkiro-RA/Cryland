@@ -31,7 +31,7 @@ $_POST
                 <tr>
                     <th>Name</th>
                     <th>Attack</th>
-                    <th>Health</th>
+                    <th>Magic</th>
                     <th>Defence</th>
                     <th>Price</th>
                 </tr>
