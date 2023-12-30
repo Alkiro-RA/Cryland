@@ -98,7 +98,7 @@ if(isset($_SESSION['character'])){
         }
 
         $eqHTML .= '</table>';
-        $eqHTML .= '<button onclick="window.location.href=\'../\'">Go back</button>';
+        $eqHTML .= '<button onclick="window.location.href=\'../\'">Back</button>';
         echo $eqHTML;
 
     }catch (PDOException $e)

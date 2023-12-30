@@ -116,7 +116,8 @@ $characterInfoHTML .=        '</div>
 $characterInfoHTML .='<div class="char-buttons">
         <button onclick="upgradeAttribute(\'save\')">Save</button>
         <button onclick="upgradeAttribute(\'reset\')">Reset</button>
-        <button onclick="window.location.href=\'inventory\'">Inventory</button>';
+        <button onclick="window.location.href=\'inventory\'">Inventory</button>
+        <button onclick="window.location.href=\'../index.php\'">Back</button>';
 
 $characterInfoHTML .=  '</div>';
 echo $characterInfoHTML;
