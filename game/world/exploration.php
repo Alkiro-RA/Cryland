@@ -59,7 +59,7 @@ try {
                 $_SESSION['paralysis_counter'] = 0;
                 $_SESSION['battle_log'] = '<p>Begin of battle with: ' . $new_enemy['name'] . '</p>'; ?>
                 <button onclick="window.location.href='../battle/index.php'">Fight</button>
-                <button onclick="window.location.href='../index.php'">Run</button>
+                <button onclick="window.location.href='../index.php'">Run Away</button>
             </div>
     </div>
 

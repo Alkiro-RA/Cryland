@@ -123,7 +123,7 @@ try {
                 if ($enemy['health'] <= 0) {
                     $coin_reward = rand(1, $enemy['lvl']);
                     $_SESSION['battle_log'] .= '<p>' . $player['name'] . ' won against '. $enemy['name'] .'</p>';
-                    $_SESSION['battle_log'] .= '<p>'.$player['name'].' got '.$enemy['lvl'].' XP points and '. $coin_reward. ' coins</p>';
+                    $_SESSION['battle_log'] .= '<p>'.$player['name'].' got '.$enemy['lvl'].' XP point(s) and '. $coin_reward. ' coin(s)</p>';
                     // XP and Coin rewards 
                     $player['exp'] += $enemy['lvl'];
                     $player['coins'] += $coin_reward;
@@ -260,11 +260,11 @@ try {
                 $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'potion\')">Use Potion</button>';
             }
             if($player['consumable']>0){
-                $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Paralisys curse</button>';
-                $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Fire ball</button>';
+                $battleInfoHTML .= '<button onclick="performAction(\'consumable\')">Paralisys Curse</button>';
+                $battleInfoHTML .= '<button onclick="performAction(\'consumable_2\')">Fire Ball</button>';
             }else{
-                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'consumable\')">Paralisys curse</button>';
-                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'consumable_2\')">Fire ball</button>';
+                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'consumable\')">Paralisys Curse</button>';
+                $battleInfoHTML .= '<button class="unclickable-button" onclick="performAction(\'consumable_2\')">Fire Ball</button>';
             }
 
         }

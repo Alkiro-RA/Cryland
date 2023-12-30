@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 28 Gru 2023, 00:03
--- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.2.0
+-- Generation Time: Dec 30, 2023 at 12:34 PM
+-- Wersja serwera: 10.4.28-MariaDB
+-- Wersja PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Baza danych: `cryland_db`
+-- Database: `cryland_db`
 --
 
 -- --------------------------------------------------------
@@ -38,11 +38,11 @@ CREATE TABLE `bosses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `bosses`
+-- Dumping data for table `bosses`
 --
 
 INSERT INTO `bosses` (`id`, `name`, `attack`, `health`, `maxhealth`, `defense`, `consumable`) VALUES
-(1, 'Skeleton King', 15, 100, 100, 5, 2);
+(1, 'Goblin King', 15, 100, 100, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -62,17 +62,18 @@ CREATE TABLE `characters` (
   `maxhealth` int(255) NOT NULL,
   `defense` int(255) NOT NULL,
   `potion` int(60) NOT NULL,
-  `consumable` int(60) NOT NULL
+  `consumable` int(60) NOT NULL,
+  `duel_won` int(10) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `characters`
+-- Dumping data for table `characters`
 --
 
-INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
-(1, 'Kyuba', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0);
-INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`) VALUES
-(2, 'Rash', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0);
+INSERT INTO `characters` (`id`, `name`, `level`, `exp`, `coins`, `weaponsid`, `attack`, `health`, `maxhealth`, `defense`, `potion`, `consumable`, `duel_won`) VALUES
+(1, 'Kyuba', 3, 26, 50, NULL, 7, 5, 5, 5, 0, 0, 0),
+(2, 'Rash', 10, 41, 12, 1, 8, 100, 100, 19, 3, 0, 0),
+(5, 'test', 1, 0, 0, NULL, 5, 5, 5, 2, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,7 @@ CREATE TABLE `enemies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `enemies`
+-- Dumping data for table `enemies`
 --
 
 INSERT INTO `enemies` (`id`, `lvl`, `name`, `attack`, `health`, `maxhealth`, `defense`) VALUES
@@ -100,6 +101,26 @@ INSERT INTO `enemies` (`id`, `lvl`, `name`, `attack`, `health`, `maxhealth`, `de
 (6, 3, 'Hobgoblin', 5, 10, 10, 4),
 (7, 2, 'Skeleton', 5, 3, 3, 0),
 (11, 3, 'Armored Skeleton', 5, 5, 5, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `eq`
+--
+
+CREATE TABLE `eq` (
+  `id` int(255) NOT NULL,
+  `characterid` int(255) NOT NULL,
+  `weaponid` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `eq`
+--
+
+INSERT INTO `eq` (`id`, `characterid`, `weaponid`) VALUES
+(2, 2, 1),
+(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +134,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `rolename`) VALUES
@@ -136,13 +157,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Zrzut danych tabeli `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
-(1, 2, 1, 'Kyuba', 'test@o2.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m');
-INSERT INTO `users` (`id`, `roleid`, `charactersid`, `nickname`, `email`, `password`) VALUES
-(2, 2, 2, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS');
+(1, 2, 1, 'Kyuba', 'test@o2.pl', '$2y$10$4QG1rpzN4UnO1l4xPzk1a.kAdWkBDuFK7pkNa7LeSNopzppNiDl8m'),
+(2, 2, 2, 'Rash', 'rog@test.pl', '$2y$10$Y.DXRyTWgfPqRXn.7u1.Xesm.QfXtfrMNv0xNxWi1pRRdPYaLQmIS'),
+(9, 1, 5, 'test', 'test@test.pl', '$2y$10$ZcdCUOb0bTx/Gnf0xLkYS.SFd.V/pQdHJh2Oj1R30ZR8pFJzPkW7W');
 
 -- --------------------------------------------------------
 
@@ -159,7 +180,12 @@ CREATE TABLE `weapons` (
   `defense_bonus` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-INSERT INTO `weapons` (`id`, `name`, `price`, `attack_bonus`, `health_bonus`, `defense_bonus`) VALUES ('1', 'Knife', '10', '3', '0', '1');
+--
+-- Dumping data for table `weapons`
+--
+
+INSERT INTO `weapons` (`id`, `name`, `price`, `attack_bonus`, `health_bonus`, `defense_bonus`) VALUES
+(1, 'Knife', 10, 3, 0, 1);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -185,6 +211,14 @@ ALTER TABLE `enemies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeksy dla tabeli `eq`
+--
+ALTER TABLE `eq`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `weaponid` (`weaponid`),
+  ADD KEY `eq_ibfk_1` (`characterid`);
+
+--
 -- Indeksy dla tabeli `roles`
 --
 ALTER TABLE `roles`
@@ -205,57 +239,70 @@ ALTER TABLE `weapons`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT dla zrzuconych tabel
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT dla tabeli `bosses`
+-- AUTO_INCREMENT for table `bosses`
 --
 ALTER TABLE `bosses`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT dla tabeli `characters`
+-- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT dla tabeli `enemies`
+-- AUTO_INCREMENT for table `enemies`
 --
 ALTER TABLE `enemies`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT dla tabeli `roles`
+-- AUTO_INCREMENT for table `eq`
+--
+ALTER TABLE `eq`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT dla tabeli `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT dla tabeli `weapons`
+-- AUTO_INCREMENT for table `weapons`
 --
 ALTER TABLE `weapons`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ograniczenia dla zrzutów tabel
+-- Constraints for dumped tables
 --
 
 --
--- Ograniczenia dla tabeli `characters`
+-- Constraints for table `characters`
 --
 ALTER TABLE `characters`
   ADD CONSTRAINT `characters_ibfk_2` FOREIGN KEY (`weaponsid`) REFERENCES `weapons` (`id`);
 
 --
--- Ograniczenia dla tabeli `users`
+-- Constraints for table `eq`
+--
+ALTER TABLE `eq`
+  ADD CONSTRAINT `eq_ibfk_1` FOREIGN KEY (`characterid`) REFERENCES `characters` (`id`),
+  ADD CONSTRAINT `eq_ibfk_2` FOREIGN KEY (`weaponid`) REFERENCES `weapons` (`id`);
+
+--
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`charactersid`) REFERENCES `characters` (`id`),
