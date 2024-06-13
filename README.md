@@ -21,8 +21,3 @@ login:
 admin@test.pl
 password:
 admin
-
-# Recommended anime: 
-Shingeki no Kyojin
-Jujutsu Kaisen
-Kimetsu no Yaiba
